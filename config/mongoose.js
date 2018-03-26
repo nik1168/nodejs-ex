@@ -27,7 +27,11 @@ module.exports = function () {
 
     }
   }
-    var db = mongoose.connect(mongoURL);
+  const options = {
+    reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+    reconnectInterval: 500, // Reconnect every 500ms
+  };
+    var db = mongoose.connect(mongoURL,options);
     require('../components/user/model/user.model');
     return db;
 };

@@ -14,7 +14,7 @@ module.exports = function () {
       mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
       mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
       mongoPassword = process.env[mongoServiceName + '_PASSWORD'],
-    mongoUser = process.env[mongoServiceName + '_USER'];
+      mongoUser = process.env[mongoServiceName + '_USER'];
 
     if (mongoHost && mongoPort && mongoDatabase) {
       mongoURLLabel = mongoURL = 'mongodb://';
@@ -28,7 +28,7 @@ module.exports = function () {
     }
   }
     var db = mongoose.connect(mongoURL);
-    // require('../components/user/model/user.model');
+    require('../components/user/model/user.model');
     return db;
 };
 

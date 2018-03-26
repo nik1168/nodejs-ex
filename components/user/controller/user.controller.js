@@ -8,7 +8,7 @@ var User = mongoose.model('User');
 //Mongo db methods for user
 module.exports.create = function (req,res) {
     var user = new User({
-      name : 'Niklaus',
+      name : 'Niklauss',
       password : '123',
       admin : true
     });

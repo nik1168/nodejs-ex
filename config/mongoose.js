@@ -29,9 +29,15 @@ module.exports = function () {
   }
   const options = {
     reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
-    reconnectInterval: 500, // Reconnect every 500ms
+    reconnectInterval: 500 // Reconnect every 500ms
   };
-    var db = mongoose.connect(mongoURL,options);
+  function success(){
+    console.log("Connected to database the first time");
+  }
+  function error(){
+    console.log("Error connecting to database first time");
+  }
+    var db = mongoose.connect(mongoURL,options).then(success,error);
     require('../components/user/model/user.model');
     return db;
 };

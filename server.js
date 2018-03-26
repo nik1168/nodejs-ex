@@ -50,6 +50,23 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
 
+/**
+ * Init connection to mongo database
+ * @param success
+ * @param error
+ */
+function initDb(success,error){
+  db.then(function(){
+    if(success){
+      success()
+    }
+  },function (err) {
+    if(error){
+      error(err)
+    }
+  })
+}
+
 module.exports = app;
 
 // initDb(function (err) {
@@ -125,7 +142,15 @@ module.exports = app;
 // });
 
 app.get('/pagecount', function (req, res) {
-  res.send('{ pageCount: -1 }');
+  function success(){
+    console.log("Successful connection to database");
+    res.send('{ pageCount: -1 :) }');
+  }
+  function error(err){
+    console.log("Couldnt connect to database");
+    res.send('{ Error: '+err+' }');
+  }
+  initDb(success,error);
 });
 
 

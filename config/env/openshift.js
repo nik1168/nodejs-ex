@@ -4,7 +4,7 @@ module.exports = {
   'databaseMongoDb': 'mongodb://localhost:27017/test',
   'driver': 'mongoDb',
   'mongoUrl' : process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
-  // 'mongoServiceName' : process.env.DATABASE_SERVICE_NAME,
+  'mongoServiceName' : process.env.DATABASE_SERVICE_NAME,
   // 'mongoHost'  : process.env[process.env.DATABASE_SERVICE_NAME() + '_SERVICE_HOST'],
   // 'mongoPort' : process.env[process.env.DATABASE_SERVICE_NAME() + '_SERVICE_PORT'],
   // 'mongoDatabase' : process.env[process.env.DATABASE_SERVICE_NAME() + '_DATABASE'],

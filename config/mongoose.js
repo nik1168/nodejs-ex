@@ -28,6 +28,11 @@ module.exports = function () {
 
     }
   }
+  else{
+    if(!mongoURL){
+      mongoURL = 'mongodb://localhost:27017/test'
+    }
+  }
   const options = {
     reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
     reconnectInterval: 500 // Reconnect every 500ms

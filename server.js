@@ -71,7 +71,7 @@ module.exports = app;
 
 // initDb(function (err) {
 //   console.log('Error connecting to Mongo. Message:\n' + err);
-// });
+// });s
 
 // mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
 // mongoURLLabel = "";

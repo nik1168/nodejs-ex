@@ -29,6 +29,8 @@ module.exports.create = function (req,res) {
 };
 
 module.exports.getAll = function (req,res) {
+  console.log("User");
+  console.log(User);
   if(User){
     User.find(function (err,users) {
       if(err){

@@ -34,8 +34,9 @@ module.exports = function () {
   function success(){
     console.log("Connected to database the first time");
   }
-  function error(){
+  function error(error){
     console.log("Error connecting to database first time");
+    console.log(error);
   }
     var db = mongoose.connect(mongoURL,options).then(success,error);
     require('../components/user/model/user.model');

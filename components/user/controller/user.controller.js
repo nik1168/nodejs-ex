@@ -25,9 +25,13 @@ module.exports.create = function (req,res) {
 module.exports.getAll = function (req,res) {
   User.find(function (err,users) {
     if(err){
+      console.log("Error Getting users!!");
+      console.log(err);
       res.error(err)
     }
     else{
+      console.log("Successful users");
+      console.log(users);
       res.send(users)
     }
   })

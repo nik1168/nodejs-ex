@@ -7,4 +7,5 @@ var express = require('express');
 var router = express.Router();
 router.post('/',user.create);
 router.get('/',user.getAll);
+router.get('/test',user.getTest);
 module.exports = router;

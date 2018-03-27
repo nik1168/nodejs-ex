@@ -37,6 +37,10 @@ module.exports.getAll = function (req,res) {
   })
 };
 
+module.exports.getTest = function (req,res) {
+  res.send('test');
+}
+
 
 
 

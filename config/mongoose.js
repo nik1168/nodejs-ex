@@ -10,6 +10,7 @@ module.exports = function () {
       mongoURLLabel = "";
     console.log("mongoURL",mongoURL);
   if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
+    console.log("entro al buen if");
     var mongoServiceName = config.mongoServiceName,
       mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
       mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
@@ -27,6 +28,10 @@ module.exports = function () {
       mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
 
     }
+    console.log("mongoURL final parsed");
+    console.log(mongoURL);
+    console.log("mongoURLLabel");
+    console.log(mongoURLLabel);
   }
   else{
     if(!mongoURL){

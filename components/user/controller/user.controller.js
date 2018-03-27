@@ -7,39 +7,51 @@ var User = mongoose.model('User');
 
 //Mongo db methods for user
 module.exports.create = function (req,res) {
+  if(User){
     var user = new User({
       name : 'Niklauss',
       password : '123',
       admin : true
     });
-  user.save(function (err, user) {
-    if (err) {
-      res.error(err);
-    }
-    else{
-      res.send(user);
-    }
-  });
+    user.save(function (err, user) {
+      if (err) {
+        res.error(err);
+      }
+      else{
+        res.send(user);
+      }
+    });
+  }
+  else{
+    res.send('user is undefined')
+  }
+
 };
 
 module.exports.getAll = function (req,res) {
-  User.find(function (err,users) {
-    if(err){
-      console.log("Error Getting users!!");
-      console.log(err);
-      res.error(err)
-    }
-    else{
-      console.log("Successful users");
-      console.log(users);
-      res.send(users)
-    }
-  })
+  if(User){
+    User.find(function (err,users) {
+      if(err){
+        console.log("Error Getting users!!");
+        console.log(err);
+        res.error(err)
+      }
+      else{
+        console.log("Successful users");
+        console.log(users);
+        res.send(users)
+      }
+    })
+  }
+  else{
+    res.send('user is undefined')
+  }
+
 };
 
 module.exports.getTest = function (req,res) {
   res.send('test');
-}
+};
 
 
 

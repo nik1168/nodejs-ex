@@ -8,6 +8,7 @@ module.exports = function () {
     var mongoURL = config.mongoUrl,
       mongoUser,
       mongoURLLabel = "";
+    console.log("mongoURL",mongoURL);
   if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
     var mongoServiceName = config.mongoServiceName,
       mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],

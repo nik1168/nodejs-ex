@@ -3,7 +3,7 @@
  */
 'use strict';
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
+var User = mongoose.model('UserModel');
 
 //Mongo db methods for user
 module.exports.create = function (req,res) {

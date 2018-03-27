@@ -6,4 +6,4 @@ var UserSchema = new Schema({
   password: String,
   admin: Boolean
 });
-mongoose.model('UserModel',UserSchema);
+mongoose.model('User',UserSchema);

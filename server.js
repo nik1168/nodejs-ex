@@ -6,13 +6,13 @@ var express = require('express'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'), // Body parser for api requests
   cors = require('cors'), // Handle CORS
-  config = require('./config'), // Config variables
-  mongoose = require('./config/mongoose'), // Mongoose configuration
-  db = mongoose(); // Db connection instance
+  config = require('./config'); // Config variables
   Object.assign = require('object-assign');
 
 // Routes for app
 var userRoute = require('./components/user/route/user.route'); // Routes for users
+var roleRoute = require('./components/role/route/role.route'); // Routes for roles
+var deviceRoute = require('./components/device/route/device.route'); // Routes for devices
 
 
 // app configuration
@@ -29,8 +29,6 @@ app.set('superSecret', config.secret); // secret variable
 
 // Main Route
 app.get('/', function (req, res) {
-  console.log("testing the debug");
-  console.log("test");
   res.send("hola");
 });
 
@@ -40,7 +38,8 @@ app.get('/pagecount', function (req, res) {
 });
 
 //API
-app.use('/users', userRoute);
+app.use('/user', userRoute);
+app.use('/role', roleRoute);
 
 
 // error handling

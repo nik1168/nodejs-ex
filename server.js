@@ -1,3 +1,4 @@
+'use strict';
 // Pier fitness backend
 var express = require('express'),
   app = express(), // Express instance
@@ -13,6 +14,8 @@ var express = require('express'),
 var userRoute = require('./components/user/route/user.route'); // Routes for users
 var roleRoute = require('./components/role/route/role.route'); // Routes for roles
 var deviceRoute = require('./components/device/route/device.route'); // Routes for devices
+var muscleRoute = require('./components/muscle/route/muscle.route'); // Routes for muscles
+var categoryRoute = require('./components/category/route/category.route'); // Routes for categories
 
 
 // app configuration
@@ -40,6 +43,9 @@ app.get('/pagecount', function (req, res) {
 //API
 app.use('/user', userRoute);
 app.use('/role', roleRoute);
+app.use('/device', deviceRoute);
+app.use('/muscle', muscleRoute);
+app.use('/category', categoryRoute);
 
 
 // error handling

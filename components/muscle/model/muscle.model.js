@@ -14,7 +14,9 @@ var Muscle = sequelize.define('muscle', {
     set      : function(val) {
       this.setDataValue('name', val);
     }
-  }
+  },
+  createdAt: DataTypes.DATE,
+  modifiedAt : DataTypes.DATE
 },{
   freezeTableName: true,
   tableName: 'muscle',
@@ -45,7 +47,9 @@ var Muscle = sequelize.define('muscle', {
 
 function buildMuscle(self) {
   return {
-    name : self.name
+    name : self.name,
+    createdAt : self.createdAt,
+    modifiedAt : self.modifiedAt
   }
 }
 

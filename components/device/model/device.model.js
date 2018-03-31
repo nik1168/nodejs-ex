@@ -22,6 +22,17 @@ var Device = sequelize.define('device', {
     set      : function(val) {
       this.setDataValue('uuid', val);
     }
+  },
+  createdAt: DataTypes.DATE,
+  modifiedAt : DataTypes.DATE,
+  model : {
+    type : DataTypes.STRING,
+    get      : function()  {
+      return this.getDataValue('model');
+    },
+    set      : function(val) {
+      this.setDataValue('model', val);
+    }
   }
 },{
   freezeTableName: true,
@@ -53,7 +64,10 @@ var Device = sequelize.define('device', {
 function buildDevice(self) {
   return {
     user_id : self.user_id,
-    uuid : self.uuid
+    uuid : self.uuid,
+    createdAt : self.createdAt,
+    modifiedAt : self.modifiedAt,
+    model : self.model
   }
 }
 Device.belongsTo(User,{foreignKey:'user_id'});

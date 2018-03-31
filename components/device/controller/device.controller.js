@@ -111,12 +111,15 @@ module.exports.delete = function (req,res) {
 /**
  * Init a device
  * @param payload
- * @returns {{name: string}}
+ * @returns {{user_id: *|string|Device.user_id|{type, references}, uuid: string, createdAt: number, modifiedAt: number, model: string}}
  */
 function initDevice(payload) {
   return {
     user_id : payload.user_id,
-    uuid: payload.uuid || ''
+    uuid: payload.uuid || '',
+    createdAt : Date.now(),
+    modifiedAt : Date.now(),
+    model : payload.model || ''
   }
 }
 
@@ -128,6 +131,9 @@ function initDevice(payload) {
 function updateDevice(device, payload){
   device.user_id = payload.user_id;
   device.uuid = payload.uuid;
+  device.createdAt = payload.createdAt;
+  device.modifiedAt = Date.now();
+  device.model = payload.model;
 }
 
 

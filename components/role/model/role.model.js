@@ -14,7 +14,9 @@ var Role = sequelize.define('role', {
     set      : function(val) {
       this.setDataValue('name', val);
     }
-  }
+  },
+  createdAt: DataTypes.DATE,
+  modifiedAt : DataTypes.DATE
 },{
   freezeTableName: true,
   tableName: 'role',
@@ -41,11 +43,17 @@ var Role = sequelize.define('role', {
     }
   }
 });
-// Role.belongsTo(User,{foreignKey:'role_id'});
 
+/**
+ * Build a role
+ * @param self
+ * @returns {{name, createdAt: *|String|Boolean, modifiedAt: *}}
+ */
 function buildRole(self) {
   return {
-    name : self.name
+    name : self.name,
+    createdAt : self.createdAt,
+    modifiedAt : self.modifiedAt
   }
 }
 

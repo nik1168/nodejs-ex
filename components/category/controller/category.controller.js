@@ -117,7 +117,9 @@ module.exports.delete = function (req,res) {
 function initCategory(payload) {
 
   return {
-    name: payload.name || ''
+    name: payload.name || '',
+    createdAt : Date.now(),
+    modifiedAt : Date.now()
   }
 }
 
@@ -128,6 +130,8 @@ function initCategory(payload) {
  */
 function updateCategory(category, payload){
   category.name = payload.name;
+  category.createdAt = payload.createdAt;
+  category.modifiedAt = Date.now();
 }
 
 

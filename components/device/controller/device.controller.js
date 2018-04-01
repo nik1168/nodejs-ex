@@ -117,6 +117,7 @@ function initDevice(payload) {
   return {
     user_id : payload.user_id,
     uuid: payload.uuid || '',
+    os_id: payload.os_id || '',
     createdAt : Date.now(),
     modifiedAt : Date.now(),
     model : payload.model || ''
@@ -131,6 +132,7 @@ function initDevice(payload) {
 function updateDevice(device, payload){
   device.user_id = payload.user_id;
   device.uuid = payload.uuid;
+  device.os_id = payload.os_id;
   device.createdAt = payload.createdAt;
   device.modifiedAt = Date.now();
   device.model = payload.model;

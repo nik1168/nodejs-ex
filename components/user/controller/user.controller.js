@@ -169,6 +169,7 @@ function initUser(payload) {
     gender : payload.gender || '',
     firstTime : payload.firstTime || '',
     role_id : payload.role_id,
+    image : payload.image,
     createdAt : Date.now(),
     modifiedAt : Date.now()
   }
@@ -189,6 +190,8 @@ function updateUser(user, payload){
   user.email = payload.email;
   user.gender = payload.gender;
   user.firstTime = payload.firstTime;
+  user.role_id = payload.role_id;
+  user.image = payload.image;
   user.createdAt = payload.createdAt;
   user.modifiedAt = Date.now();
 }

@@ -5,9 +5,9 @@ var router = express.Router();
 
 router.get('/',muscle.getAll);
 router.post('/',muscle.create);
-router.get('/:role_id',muscle.getById);
-router.put('/:role_id',muscle.update);
-router.delete('/:role_id',muscle.delete);
+router.get('/:muscle_id',muscle.getById);
+router.put('/:muscle_id',muscle.update);
+router.delete('/:muscle_id',muscle.delete);
 
 module.exports = router;
 

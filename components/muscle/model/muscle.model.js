@@ -1,6 +1,7 @@
 'use strict';
 var DataTypes = require("sequelize");
 var sequelize = require('../../../config/sequelize').db;
+var MuscularGroup = require('../../muscular_group/model/muscular_group.model').muscularGroup;
 var Muscle = sequelize.define('muscle', {
   id : {
     type:DataTypes.INTEGER,
@@ -16,7 +17,14 @@ var Muscle = sequelize.define('muscle', {
     }
   },
   createdAt: DataTypes.DATE,
-  modifiedAt : DataTypes.DATE
+  modifiedAt : DataTypes.DATE,
+  muscular_group_id : {
+    type : DataTypes.INTEGER,
+    references: {
+      model: MuscularGroup,
+      key: 'id'
+    }
+  }
 },{
   freezeTableName: true,
   tableName: 'muscle',
@@ -43,7 +51,6 @@ var Muscle = sequelize.define('muscle', {
     }
   }
 });
-// Muscle.belongsTo(User,{foreignKey:'muscle_id'});
 
 function buildMuscle(self) {
   return {
@@ -52,5 +59,5 @@ function buildMuscle(self) {
     modifiedAt : self.modifiedAt
   }
 }
-
+Muscle.belongsTo(MuscularGroup,{foreignKey:'muscular_group_id'});
 module.exports.muscle = Muscle;

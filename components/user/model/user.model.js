@@ -24,6 +24,7 @@ var User = sequelize.define('user', {
       key: 'id'
     }
   },
+  image : DataTypes.STRING,
   createdAt: DataTypes.DATE,
   modifiedAt : DataTypes.DATE
 },{
@@ -77,6 +78,7 @@ function buildUser(self) {
     gender : self.gender,
     firstTime : self.firstTime,
     role_id : self.role_id,
+    image : self.image,
     createdAt : self.createdAt,
     modifiedAt : self.modifiedAt
   }

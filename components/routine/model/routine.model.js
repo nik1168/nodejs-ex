@@ -37,7 +37,7 @@ var Routine = sequelize.define('routine', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(routine_id, onSuccess, onError) {
-      Routine.update({},{where: {id: routine_id} })
+      Routine.update(buildRoutine(this),{where: {id: routine_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(routine_id, onSuccess, onError) {

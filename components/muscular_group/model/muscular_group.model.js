@@ -35,7 +35,7 @@ var MuscularGroup = sequelize.define('MuscularGroup', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(muscular_group_id, onSuccess, onError) {
-      MuscularGroup.update({},{where: {id: muscular_group_id} })
+      MuscularGroup.update(buildMuscularGroup(this),{where: {id: muscular_group_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(muscular_group_id, onSuccess, onError) {

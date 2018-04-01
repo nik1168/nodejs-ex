@@ -35,7 +35,7 @@ var Role = sequelize.define('role', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(role_id, onSuccess, onError) {
-      Role.update({},{where: {id: role_id} })
+      Role.update(buildRole(this),{where: {id: role_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(role_id, onSuccess, onError) {

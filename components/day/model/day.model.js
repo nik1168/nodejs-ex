@@ -33,7 +33,7 @@ var Day = sequelize.define('day', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(day_id, onSuccess, onError) {
-      Day.update({},{where: {id: day_id} })
+      Day.update(buildDay(this),{where: {id: day_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(day_id, onSuccess, onError) {

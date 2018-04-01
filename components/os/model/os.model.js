@@ -33,7 +33,7 @@ var Os = sequelize.define('os', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(os_id, onSuccess, onError) {
-      Os.update({},{where: {id: os_id} })
+      Os.update(buildOs(this),{where: {id: os_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(os_id, onSuccess, onError) {

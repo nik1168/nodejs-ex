@@ -37,7 +37,7 @@ var Diet = sequelize.define('diet', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(diet_id, onSuccess, onError) {
-      Diet.update({},{where: {id: diet_id} })
+      Diet.update(buildDiet(this),{where: {id: diet_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(diet_id, onSuccess, onError) {

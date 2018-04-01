@@ -38,7 +38,7 @@ var Post = sequelize.define('post', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(post_id, onSuccess, onError) {
-      Post.update({},{where: {id: post_id} })
+      Post.update(buildPost(this),{where: {id: post_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(post_id, onSuccess, onError) {

@@ -16,22 +16,24 @@ module.exports.create = function (req, res) {
       });
     },
     function (error) {
-      res.status(500).send("Error creating user");
+    console.log("error");
+    console.log(error);
+      res.status(404).send("Error creating user");
     })
 };
 
 /**
- * Gets all roles
+ * Gets all users
  * @param req
  * @param res
  */
 module.exports.getAll = function (req, res) {
   var user = User.build();
-  user.retrieveAll(function(roles) {
-    if (roles) {
+  user.retrieveAll(function(users) {
+    if (users) {
       res.json({
         message : "success",
-        data : roles
+        data : users
       });
     } else {
       res.status(404).send("No users were found");
@@ -51,7 +53,7 @@ module.exports.getAll = function (req, res) {
 module.exports.update = function (req,res) {
   var user = User.build();
   updateUser(user,req.body);
-  user.updateById(req.params.role_id, function(success) {
+  user.updateById(req.params.user_id, function(success) {
     var user = success.dataValues;
     if (success) {
       res.json({
@@ -62,6 +64,8 @@ module.exports.update = function (req,res) {
       res.status(404).send("User not found");
     }
   }, function(error) {
+    console.log("error updating user");
+    console.log(error);
     res.status(404).send("Error updating user");
   });
 };
@@ -73,7 +77,7 @@ module.exports.update = function (req,res) {
  */
 module.exports.getById = function (req,res) {
   var user = User.build();
-  user.retrieveById(req.params.role_id, function(user) {
+  user.retrieveById(req.params.user_id, function(user) {
     if (user) {
       res.json({
         message : "success",
@@ -94,7 +98,7 @@ module.exports.getById = function (req,res) {
  */
 module.exports.delete = function (req,res) {
   var user = User.build();
-  user.removeById(req.params.role_id, function(user) {
+  user.removeById(req.params.user_id, function(user) {
     if (user) {
       res.json({
         message: 'User removed!'

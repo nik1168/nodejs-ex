@@ -35,7 +35,7 @@ var Exercise = sequelize.define('exercise', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(exercise_id, onSuccess, onError) {
-      Exercise.update({},{where: {id: exercise_id} })
+      Exercise.update(buildExercise(this),{where: {id: exercise_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(exercise_id, onSuccess, onError) {

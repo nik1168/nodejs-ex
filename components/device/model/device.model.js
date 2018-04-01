@@ -60,7 +60,7 @@ var Device = sequelize.define('device', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(device_id, onSuccess, onError) {
-      Device.update({},{where: {id: device_id} })
+      Device.update(buildDevice(this),{where: {id: device_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(device_id, onSuccess, onError) {

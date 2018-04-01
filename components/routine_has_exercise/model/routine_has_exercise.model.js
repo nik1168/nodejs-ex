@@ -51,7 +51,7 @@ var RoutineHasExercise = sequelize.define('routineHasExercise', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(routine_has_exercise_id, onSuccess, onError) {
-      RoutineHasExercise.update({},{where: {id: routine_has_exercise_id} })
+      RoutineHasExercise.update(buildRoutineHasExercise(this),{where: {id: routine_has_exercise_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(routine_id,exercise_id,day_id, onSuccess, onError) {

@@ -40,7 +40,7 @@ var ExerciseHasMuscle = sequelize.define('exerciseHasMuscle', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(exercise_has_muscle_id, onSuccess, onError) {
-      ExerciseHasMuscle.update({},{where: {id: exercise_has_muscle_id} })
+      ExerciseHasMuscle.update(buildExerciseHasMuscle(this),{where: {id: exercise_has_muscle_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(exercise_id,muscle_id, onSuccess, onError) {

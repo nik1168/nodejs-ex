@@ -52,7 +52,7 @@ var User = sequelize.define('user', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(user_id, onSuccess, onError) {
-      User.update({},{where: {id: user_id} })
+      User.update(buildUser(this),{where: {id: user_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(user_id, onSuccess, onError) {

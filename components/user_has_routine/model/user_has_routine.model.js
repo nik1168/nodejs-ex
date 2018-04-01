@@ -50,7 +50,7 @@ var UserHasRoutine = sequelize.define('userHasRoutine', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function (user_has_routine_id, onSuccess, onError) {
-      UserHasRoutine.update({}, {where: {id: user_has_routine_id}})
+      UserHasRoutine.update(buildUserHasRoutine(this), {where: {id: user_has_routine_id}})
         .then(onSuccess).catch(onError);
     },
     removeById: function (user_id, routine_id, onSuccess, onError) {

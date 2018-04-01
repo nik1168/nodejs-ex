@@ -35,7 +35,7 @@ var Category = sequelize.define('category', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(category_id, onSuccess, onError) {
-      Category.update({},{where: {id: category_id} })
+      Category.update(buildCategory(this),{where: {id: category_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(category_id, onSuccess, onError) {

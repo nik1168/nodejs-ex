@@ -8,7 +8,7 @@ module.exports = {
   'host' : 'localhost',
   'mysqlPort' : 3306,
   'user' : 'root',
-  'database' : 'pierfitness',
+  'database' : 'smartfit',
   'password' : 'control123!',
   'connectionUrl' : '',
   'saltRounds' : 10

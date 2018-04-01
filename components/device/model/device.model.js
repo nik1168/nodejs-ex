@@ -24,7 +24,7 @@ var Device = sequelize.define('device', {
       this.setDataValue('uuid', val);
     }
   },
-  od_id : {
+  os_id : {
     type : DataTypes.INTEGER,
     references: {
       model: Os,

@@ -23,7 +23,7 @@ var Post = sequelize.define('post', {
   video : DataTypes.STRING
 },{
   freezeTableName: true,
-  tableName: 'post',
+  tableName: 'posts',
   instanceMethods: {
     retrieveAll: function(onSuccess, onError) {
       Post.findAll({raw: false})

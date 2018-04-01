@@ -117,9 +117,7 @@ module.exports.delete = function (req,res) {
 function initDay(payload) {
 
   return {
-    name: payload.name || '',
-    createdAt : Date.now(),
-    modifiedAt : Date.now()
+    name: payload.name || ''
   }
 }
 
@@ -130,8 +128,6 @@ function initDay(payload) {
  */
 function updateDay(day, payload){
   day.name = payload.name;
-  day.createdAt = payload.createAt;
-  day.modifiedAt = Date.now();
 }
 
 

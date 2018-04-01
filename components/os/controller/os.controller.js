@@ -117,9 +117,7 @@ module.exports.delete = function (req,res) {
 function initOs(payload) {
 
   return {
-    name: payload.name || '',
-    createdAt : Date.now(),
-    modifiedAt : Date.now()
+    name: payload.name || ''
   }
 }
 
@@ -130,8 +128,6 @@ function initOs(payload) {
  */
 function updateOs(os, payload){
   os.name = payload.name;
-  os.createdAt = payload.createAt;
-  os.modifiedAt = Date.now();
 }
 
 

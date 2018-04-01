@@ -14,9 +14,7 @@ var Os = sequelize.define('os', {
     set      : function(val) {
       this.setDataValue('name', val);
     }
-  },
-  createdAt: DataTypes.DATE,
-  modifiedAt : DataTypes.DATE
+  }
 },{
   freezeTableName: true,
   tableName: 'os',
@@ -51,9 +49,7 @@ var Os = sequelize.define('os', {
  */
 function buildOs(self) {
   return {
-    name : self.name,
-    createdAt : self.createdAt,
-    modifiedAt : self.modifiedAt
+    name : self.name
   }
 }
 

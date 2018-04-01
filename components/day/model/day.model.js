@@ -14,9 +14,7 @@ var Day = sequelize.define('day', {
     set      : function(val) {
       this.setDataValue('name', val);
     }
-  },
-  createdAt: DataTypes.DATE,
-  modifiedAt : DataTypes.DATE
+  }
 },{
   freezeTableName: true,
   tableName: 'day',
@@ -51,9 +49,7 @@ var Day = sequelize.define('day', {
  */
 function buildDay(self) {
   return {
-    name : self.name,
-    createdAt : self.createdAt,
-    modifiedAt : self.modifiedAt
+    name : self.name
   }
 }
 

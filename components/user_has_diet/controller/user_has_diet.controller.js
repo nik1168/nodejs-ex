@@ -1,5 +1,5 @@
 'use strict';
-var UserHasDiet = require('../model/userHasDiet.model').userHasDiet;
+var UserHasDiet = require('../model/user_has_diet.model').userHasDiet;
 
 /**
  * Associates a diet to a user

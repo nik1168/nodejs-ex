@@ -1,5 +1,5 @@
 'use strict';
-var UserHasRoutine = require('../model/userHasRoutine.model').userHasRoutine;
+var UserHasRoutine = require('../model/user_has_routine.model').userHasRoutine;
 
 /**
  * Associates a routine to a user

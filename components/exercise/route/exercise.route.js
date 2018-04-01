@@ -1,5 +1,5 @@
 'use strict';
-var exercise = require('../controller/role.controller');
+var exercise = require('../controller/exercise.controller');
 var express = require('express');
 var router = express.Router();
 

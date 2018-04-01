@@ -1,5 +1,5 @@
 'use strict';
-var MuscularGroup = require('../model/muscularGroup.model').muscularGroup;
+var MuscularGroup = require('../model/muscular_group.model').muscularGroup;
 
 /**
  * Creates a new muscularGroup

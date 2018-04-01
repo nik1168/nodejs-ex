@@ -1,13 +1,13 @@
 'use strict';
-var role = require('../controller/role.controller');
+var muscularGroup = require('../controller/muscular_group.controller');
 var express = require('express');
 var router = express.Router();
 
-router.get('/',role.getAll);
-router.post('/',role.create);
-router.get('/:role_id',role.getById);
-router.put('/:role_id',role.update);
-router.delete('/:role_id',role.delete);
+router.get('/',muscularGroup.getAll);
+router.post('/',muscularGroup.create);
+router.get('/:muscularGroup_id',muscularGroup.getById);
+router.put('/:muscularGroup_id',muscularGroup.update);
+router.delete('/:muscularGroup_id',muscularGroup.delete);
 
 module.exports = router;
 

@@ -1,5 +1,5 @@
 'use strict';
-var ExerciseHasMuscle = require('../model/exerciseHasMuscle.model').exerciseHasMuscle;
+var ExerciseHasMuscle = require('../model/exercise_has_muscle.model').exerciseHasMuscle;
 
 /**
  * Creates a new exerciseHasMuscle

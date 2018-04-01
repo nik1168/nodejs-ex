@@ -1,5 +1,5 @@
 'use strict';
-var RoutineHasExercise = require('../model/routineHasExercise.model').routineHasExercise;
+var RoutineHasExercise = require('../model/routine_has_exercise.model').routineHasExercise;
 
 /**
  * Creates a new routineHasExercise

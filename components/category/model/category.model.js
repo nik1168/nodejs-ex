@@ -1,7 +1,7 @@
 'use strict';
 var DataTypes = require("sequelize");
 var sequelize = require('../../../config/sequelize').db;
-var Role = sequelize.define('role', {
+var Category = sequelize.define('category', {
   id : {
     type:DataTypes.INTEGER,
     primaryKey: true
@@ -19,37 +19,32 @@ var Role = sequelize.define('role', {
   modifiedAt : DataTypes.DATE
 },{
   freezeTableName: true,
-  tableName: 'role',
+  tableName: 'category',
   timestamps: false,
   instanceMethods: {
     retrieveAll: function(onSuccess, onError) {
-      Role.findAll({raw: true})
+      Category.findAll({raw: true})
         .then(onSuccess).catch(onError);
     },
-    retrieveById: function(role_id, onSuccess, onError) {
-      Role.find({where: {id: role_id}}, {raw: true})
+    retrieveById: function(category_id, onSuccess, onError) {
+      Category.find({where: {id: category_id}}, {raw: true})
         .then(onSuccess).catch(onError);
     },
     add: function(onSuccess, onError) {
-      Role.build(buildRole(this))
+      Category.build(buildCategory(this))
         .save().then(onSuccess).catch(onError);
     },
-    updateById: function(role_id, onSuccess, onError) {
-      Role.update(buildRole(this),{where: {id: role_id} })
+    updateById: function(category_id, onSuccess, onError) {
+      Category.update(buildCategory(this),{where: {id: category_id} })
         .then(onSuccess).catch(onError);
     },
-    removeById: function(role_id, onSuccess, onError) {
-      Role.destroy({where: {id: role_id}}).then(onSuccess).catch(onError);
+    removeById: function(category_id, onSuccess, onError) {
+      Category.destroy({where: {id: category_id}}).then(onSuccess).catch(onError);
     }
   }
 });
 
-/**
- * Build a role
- * @param self
- * @returns {{name, createdAt: *|String|Boolean, modifiedAt: *}}
- */
-function buildRole(self) {
+function buildCategory(self) {
   return {
     name : self.name,
     createdAt : self.createdAt,
@@ -57,4 +52,4 @@ function buildRole(self) {
   }
 }
 
-module.exports.role = Role;
+module.exports.category = Category;

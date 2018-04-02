@@ -117,7 +117,9 @@ module.exports.delete = function (req,res) {
 function initRole(payload) {
 
   return {
-    name: payload.name || ''
+    name: payload.name || '',
+    createdAt : Date.now(),
+    modifiedAt : Date.now()
   }
 }
 
@@ -128,6 +130,8 @@ function initRole(payload) {
  */
 function updateRole(role, payload){
   role.name = payload.name;
+  role.createdAt = payload.createAt;
+  role.modifiedAt = Date.now();
 }
 
 

@@ -10,7 +10,7 @@ var User = sequelize.define('user', {
   },
   name : DataTypes.STRING,
   lastName : DataTypes.STRING,
-  birthDate : DataTypes.DATE,
+  birthDate : DataTypes.DATEONLY,
   token: DataTypes.STRING,
   username: DataTypes.STRING,
   password: DataTypes.STRING,
@@ -23,11 +23,13 @@ var User = sequelize.define('user', {
       model: Role,
       key: 'id'
     }
-  }
+  },
+  image : DataTypes.STRING,
+  createdAt: DataTypes.DATE,
+  modifiedAt : DataTypes.DATE
 },{
   freezeTableName: true,
   tableName: 'user',
-  timestamps: false,
   instanceMethods: {
     retrieveAll: function(onSuccess, onError) {
       User.findAll({raw: false})
@@ -50,7 +52,7 @@ var User = sequelize.define('user', {
         .save().then(onSuccess).catch(onError);
     },
     updateById: function(user_id, onSuccess, onError) {
-      User.update({},{where: {id: user_id} })
+      User.update(buildUser(this),{where: {id: user_id} })
         .then(onSuccess).catch(onError);
     },
     removeById: function(user_id, onSuccess, onError) {
@@ -75,7 +77,10 @@ function buildUser(self) {
     email : self.email,
     gender : self.gender,
     firstTime : self.firstTime,
-    role_id : self.role_id
+    role_id : self.role_id,
+    image : self.image,
+    createdAt : self.createdAt,
+    modifiedAt : self.modifiedAt
   }
 }
 User.belongsTo(Role,{foreignKey:'role_id'});

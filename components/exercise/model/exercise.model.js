@@ -1,7 +1,7 @@
 'use strict';
 var DataTypes = require("sequelize");
 var sequelize = require('../../../config/sequelize').db;
-var Role = sequelize.define('role', {
+var Exercise = sequelize.define('exercise', {
   id : {
     type:DataTypes.INTEGER,
     primaryKey: true
@@ -19,37 +19,37 @@ var Role = sequelize.define('role', {
   modifiedAt : DataTypes.DATE
 },{
   freezeTableName: true,
-  tableName: 'role',
+  tableName: 'exercise',
   timestamps: false,
   instanceMethods: {
     retrieveAll: function(onSuccess, onError) {
-      Role.findAll({raw: true})
+      Exercise.findAll({raw: true})
         .then(onSuccess).catch(onError);
     },
-    retrieveById: function(role_id, onSuccess, onError) {
-      Role.find({where: {id: role_id}}, {raw: true})
+    retrieveById: function(exercise_id, onSuccess, onError) {
+      Exercise.find({where: {id: exercise_id}}, {raw: true})
         .then(onSuccess).catch(onError);
     },
     add: function(onSuccess, onError) {
-      Role.build(buildRole(this))
+      Exercise.build(buildExercise(this))
         .save().then(onSuccess).catch(onError);
     },
-    updateById: function(role_id, onSuccess, onError) {
-      Role.update(buildRole(this),{where: {id: role_id} })
+    updateById: function(exercise_id, onSuccess, onError) {
+      Exercise.update(buildExercise(this),{where: {id: exercise_id} })
         .then(onSuccess).catch(onError);
     },
-    removeById: function(role_id, onSuccess, onError) {
-      Role.destroy({where: {id: role_id}}).then(onSuccess).catch(onError);
+    removeById: function(exercise_id, onSuccess, onError) {
+      Exercise.destroy({where: {id: exercise_id}}).then(onSuccess).catch(onError);
     }
   }
 });
 
 /**
- * Build a role
+ * Build a exercise
  * @param self
  * @returns {{name, createdAt: *|String|Boolean, modifiedAt: *}}
  */
-function buildRole(self) {
+function buildExercise(self) {
   return {
     name : self.name,
     createdAt : self.createdAt,
@@ -57,4 +57,4 @@ function buildRole(self) {
   }
 }
 
-module.exports.role = Role;
+module.exports.exercise = Exercise;

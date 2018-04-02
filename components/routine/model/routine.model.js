@@ -1,7 +1,7 @@
 'use strict';
 var DataTypes = require("sequelize");
 var sequelize = require('../../../config/sequelize').db;
-var Role = sequelize.define('role', {
+var Routine = sequelize.define('routine', {
   id : {
     type:DataTypes.INTEGER,
     primaryKey: true
@@ -16,45 +16,49 @@ var Role = sequelize.define('role', {
     }
   },
   createdAt: DataTypes.DATE,
-  modifiedAt : DataTypes.DATE
+  modifiedAt : DataTypes.DATE,
+  image : DataTypes.STRING,
+  description : DataTypes.TEXT
 },{
   freezeTableName: true,
-  tableName: 'role',
+  tableName: 'routine',
   timestamps: false,
   instanceMethods: {
     retrieveAll: function(onSuccess, onError) {
-      Role.findAll({raw: true})
+      Routine.findAll({raw: true})
         .then(onSuccess).catch(onError);
     },
-    retrieveById: function(role_id, onSuccess, onError) {
-      Role.find({where: {id: role_id}}, {raw: true})
+    retrieveById: function(routine_id, onSuccess, onError) {
+      Routine.find({where: {id: routine_id}}, {raw: true})
         .then(onSuccess).catch(onError);
     },
     add: function(onSuccess, onError) {
-      Role.build(buildRole(this))
+      Routine.build(buildRoutine(this))
         .save().then(onSuccess).catch(onError);
     },
-    updateById: function(role_id, onSuccess, onError) {
-      Role.update(buildRole(this),{where: {id: role_id} })
+    updateById: function(routine_id, onSuccess, onError) {
+      Routine.update(buildRoutine(this),{where: {id: routine_id} })
         .then(onSuccess).catch(onError);
     },
-    removeById: function(role_id, onSuccess, onError) {
-      Role.destroy({where: {id: role_id}}).then(onSuccess).catch(onError);
+    removeById: function(routine_id, onSuccess, onError) {
+      Routine.destroy({where: {id: routine_id}}).then(onSuccess).catch(onError);
     }
   }
 });
 
 /**
- * Build a role
+ * Build a routine
  * @param self
  * @returns {{name, createdAt: *|String|Boolean, modifiedAt: *}}
  */
-function buildRole(self) {
+function buildRoutine(self) {
   return {
     name : self.name,
     createdAt : self.createdAt,
-    modifiedAt : self.modifiedAt
+    modifiedAt : self.modifiedAt,
+    image : self.image,
+    description : self.description
   }
 }
 
-module.exports.role = Role;
+module.exports.routine = Routine;

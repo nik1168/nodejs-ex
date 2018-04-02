@@ -1,7 +1,7 @@
 'use strict';
 var DataTypes = require("sequelize");
 var sequelize = require('../../../config/sequelize').db;
-var Role = sequelize.define('role', {
+var Os = sequelize.define('os', {
   id : {
     type:DataTypes.INTEGER,
     primaryKey: true
@@ -14,47 +14,43 @@ var Role = sequelize.define('role', {
     set      : function(val) {
       this.setDataValue('name', val);
     }
-  },
-  createdAt: DataTypes.DATE,
-  modifiedAt : DataTypes.DATE
+  }
 },{
   freezeTableName: true,
-  tableName: 'role',
+  tableName: 'os',
   timestamps: false,
   instanceMethods: {
     retrieveAll: function(onSuccess, onError) {
-      Role.findAll({raw: true})
+      Os.findAll({raw: true})
         .then(onSuccess).catch(onError);
     },
-    retrieveById: function(role_id, onSuccess, onError) {
-      Role.find({where: {id: role_id}}, {raw: true})
+    retrieveById: function(os_id, onSuccess, onError) {
+      Os.find({where: {id: os_id}}, {raw: true})
         .then(onSuccess).catch(onError);
     },
     add: function(onSuccess, onError) {
-      Role.build(buildRole(this))
+      Os.build(buildOs(this))
         .save().then(onSuccess).catch(onError);
     },
-    updateById: function(role_id, onSuccess, onError) {
-      Role.update(buildRole(this),{where: {id: role_id} })
+    updateById: function(os_id, onSuccess, onError) {
+      Os.update(buildOs(this),{where: {id: os_id} })
         .then(onSuccess).catch(onError);
     },
-    removeById: function(role_id, onSuccess, onError) {
-      Role.destroy({where: {id: role_id}}).then(onSuccess).catch(onError);
+    removeById: function(os_id, onSuccess, onError) {
+      Os.destroy({where: {id: os_id}}).then(onSuccess).catch(onError);
     }
   }
 });
 
 /**
- * Build a role
+ * Build a os
  * @param self
  * @returns {{name, createdAt: *|String|Boolean, modifiedAt: *}}
  */
-function buildRole(self) {
+function buildOs(self) {
   return {
-    name : self.name,
-    createdAt : self.createdAt,
-    modifiedAt : self.modifiedAt
+    name : self.name
   }
 }
 
-module.exports.role = Role;
+module.exports.os = Os;

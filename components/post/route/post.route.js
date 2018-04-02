@@ -1,0 +1,10 @@
+'use strict';
+var post = require('../controller/post.controller');
+var express = require('express');
+var router = express.Router();
+router.get('/',post.getAll);
+router.post('/',post.create);
+router.get('/:post_id',post.getById);
+router.put('/:post_id',post.update);
+router.delete('/:post_id',post.delete);
+module.exports = router;

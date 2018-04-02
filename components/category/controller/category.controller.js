@@ -2,7 +2,7 @@
 var Category = require('../model/category.model').category;
 
 /**
- * Creates a new category
+ * Creates a new category :)
  * @param req
  * @param res
  */

@@ -88,17 +88,17 @@ console.log('Server running on http://%s:%s', ip, port);
  * @param success
  * @param error
  */
-function initDb(success,error){
-  db.then(function(){
-    if(success){
-      success()
-    }
-  },function (err) {
-    if(error){
-      error(err)
-    }
-  })
-}
+// function initDb(success,error){
+//   db.then(function(){
+//     if(success){
+//       success()
+//     }
+//   },function (err) {
+//     if(error){
+//       error(err)
+//     }
+//   })
+// }
 
 module.exports = app;
 

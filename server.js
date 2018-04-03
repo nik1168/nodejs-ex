@@ -53,22 +53,22 @@ app.get('/pagecount', function (req, res) {
 });
 
 //API
-// app.use('/user', userRoute);
-// app.use('/role', roleRoute);
-// app.use('/device', deviceRoute);
-// app.use('/muscle', muscleRoute);
-// app.use('/category', categoryRoute);
-// app.use('/day', dayRoute);
-// app.use('/diet', dietRoute);
-// app.use('/exercise', exerciseRoute);
-// app.use('/exerciseHasMuscle', exerciseHasMuscleRoute);
-// app.use('/muscularGroup', muscularGroupRoute);
-// app.use('/os', osRoute);
-// app.use('/post', postRoute);
-// app.use('/routine', routineRoute);
-// app.use('/routineHasExercise', routineHasExerciseRoute);
-// app.use('/userHasDiet', userHasDietRoute);
-// app.use('/userHasRoutine', userHasRoutineRoute);
+app.use('/user', userRoute);
+app.use('/role', roleRoute);
+app.use('/device', deviceRoute);
+app.use('/muscle', muscleRoute);
+app.use('/category', categoryRoute);
+app.use('/day', dayRoute);
+app.use('/diet', dietRoute);
+app.use('/exercise', exerciseRoute);
+app.use('/exerciseHasMuscle', exerciseHasMuscleRoute);
+app.use('/muscularGroup', muscularGroupRoute);
+app.use('/os', osRoute);
+app.use('/post', postRoute);
+app.use('/routine', routineRoute);
+app.use('/routineHasExercise', routineHasExerciseRoute);
+app.use('/userHasDiet', userHasDietRoute);
+app.use('/userHasRoutine', userHasRoutineRoute);
 
 
 // error handling

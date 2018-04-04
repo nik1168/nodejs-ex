@@ -4,6 +4,8 @@
 'use strict';
 var Sequelize = require('sequelize');
 var config = require('./../config');
+console.log("CONFIG PAPAYA");
+console.log(config);
 
 //Connection variable for openshift environment deploy
 var db = new Sequelize(config.database, config.user, config.password,{

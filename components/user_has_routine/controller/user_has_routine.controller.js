@@ -106,6 +106,50 @@ module.exports.delete = function (req,res) {
   });
 };
 
+/**
+ * retrieveRoutinesByUserId
+ * @param req
+ * @param res
+ */
+module.exports.retrieveRoutinesByUserId = function (req,res) {
+  var userHasRoutine = UserHasRoutine.build();
+  userHasRoutine.retrieveRoutinesByUserId(req.params.user_id, function(userHasRoutine) {
+    if (userHasRoutine) {
+      res.json({
+        message : "success",
+        data : userHasRoutine
+      });5
+    } else {
+      res.status(404).send("Routine for user not found");
+    }
+  }, function(error) {
+    res.status(404).send("Error getting routine for user");
+  });
+};
+
+/**
+ * retrieveUsersByRoutine
+ * @param req
+ * @param res
+ */
+module.exports.retrieveUsersByRoutine = function (req,res) {
+  var userHasRoutine = UserHasRoutine.build();
+  userHasRoutine.retrieveUsersByRoutine(req.params.routine_id, function(userHasRoutine) {
+    if (userHasRoutine) {
+      res.json({
+        message : "success",
+        data : userHasRoutine
+      });5
+    } else {
+      res.status(404).send("Users for that routine not found");
+    }
+  }, function(error) {
+    res.status(404).send("Error getting users for routine");
+  });
+};
+
+
+
 
 /**
  * Init user has routine

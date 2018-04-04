@@ -30,6 +30,7 @@ var routineRoute = require('./components/routine/route/routine.route'); // Route
 var routineHasExerciseRoute = require('./components/routine_has_exercise/route/routine_has_exercise.route'); // Routes for routines has exercises
 var userHasDietRoute = require('./components/user_has_diet/route/user_has_diet.route'); // Routes for user has diets
 var userHasRoutineRoute = require('./components/user_has_routine/route/user_has_routine.route'); // Routes for user has routines
+var loginRoute = require('./components/login/route/login.route'); // Routes for user has routines
 
 
 
@@ -56,6 +57,7 @@ app.get('/pagecount', function (req, res) {
 });
 
 //API
+app.use('/login', loginRoute);
 app.use(checkTokenMiddleware.middleware);
 app.use('/user', userRoute);
 app.use('/role', roleRoute);
@@ -74,7 +76,6 @@ app.use('/routineHasExercise', routineHasExerciseRoute);
 app.use('/userHasDiet', userHasDietRoute);
 app.use('/userHasRoutine', userHasRoutineRoute);
 
-
 // error handling
 app.use(function (err, req, res, next) {
   console.error(err.stack);
@@ -86,23 +87,6 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
-
-/**
- * Init connection to mongo database
- * @param success
- * @param error
- */
-// function initDb(success,error){
-//   db.then(function(){
-//     if(success){
-//       success()
-//     }
-//   },function (err) {
-//     if(error){
-//       error(err)
-//     }
-//   })
-// }
 
 module.exports = app;
 

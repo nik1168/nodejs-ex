@@ -38,11 +38,11 @@ var UserHasRoutine = sequelize.define('userHasRoutine', {
         .then(onSuccess).catch(onError);
     },
     retrieveRoutinesByUserId: function (user_id, onSuccess, onError) {
-      UserHasRoutine.findAll({where: {user_id: user_id}}, {raw: true})
+      UserHasRoutine.find({where: {user_id: user_id}}, {raw: true})
         .then(onSuccess).catch(onError);
     },
     retrieveUsersByRoutine: function (routine_id, onSuccess, onError) {
-      UserHasRoutine.findAll({where: {routine_id: routine_id}}, {raw: true})
+      UserHasRoutine.find({where: {routine_id: routine_id}}, {raw: true})
         .then(onSuccess).catch(onError);
     },
     add: function (onSuccess, onError) {

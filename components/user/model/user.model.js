@@ -57,6 +57,10 @@ var User = sequelize.define('user', {
     },
     removeById: function(user_id, onSuccess, onError) {
       User.destroy({where: {id: user_id}}).then(onSuccess).catch(onError);
+    },
+    retrieveByUsernameAndPassword : function(username,password,onSuccess,onError){
+      User.find({where : {username : username, password : password}}, {raw : true})
+        .then(onSuccess).catch(onError);
     }
   }
 });

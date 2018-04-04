@@ -5,6 +5,7 @@ var router = express.Router();
 router.get('/',user.getAll);
 router.post('/',user.create);
 router.post('/username',user.getUserByUsername);
+router.post('/usernameAndPassword',user.getUserByUsernameAndPassword);
 router.get('/:user_id',user.getById);
 router.get('/token/:token',user.getByToken);
 router.put('/:user_id',user.update);

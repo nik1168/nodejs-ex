@@ -155,6 +155,29 @@ module.exports.getUserByUsername = function (req,res) {
 
 };
 
+/**
+ * Gets user by username and password
+ * @param req
+ * @param res
+ */
+module.exports.getUserByUsernameAndPassword = function (req,res) {
+  var user = User.build();
+  user.retrieveByUsernameAndPassword(req.body.username, req.body.password, function (user) {
+    if (user) {
+      res.json({
+        message : "success",
+        data : user
+      });
+    } else {
+      res.status(404).send("User not found");
+    }
+
+  },function (error) {
+    res.status(404).send("Error getting user");
+  })
+
+};
+
 
 /**
  * Init a user

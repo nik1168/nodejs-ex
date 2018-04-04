@@ -10,6 +10,9 @@ var express = require('express'),
   config = require('./config'); // Config variables
   Object.assign = require('object-assign');
 
+//Middleware
+var checkTokenMiddleware = require('./middlewares/checkToken.middleware');
+
 // Routes for app
 var userRoute = require('./components/user/route/user.route'); // Routes for users
 var roleRoute = require('./components/role/route/role.route'); // Routes for roles
@@ -53,6 +56,7 @@ app.get('/pagecount', function (req, res) {
 });
 
 //API
+app.use(checkTokenMiddleware.middleware);
 app.use('/user', userRoute);
 app.use('/role', roleRoute);
 app.use('/device', deviceRoute);

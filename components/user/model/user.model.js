@@ -61,6 +61,22 @@ var User = sequelize.define('user', {
     retrieveByUsernameAndPassword : function(username,password,onSuccess,onError){
       User.find({where : {username : username, password : password}}, {raw : true})
         .then(onSuccess).catch(onError);
+    },
+    retrieveTest : function (onSuccess, onError) {
+      var query = "SELECT b.* FROM user a, routine b, user_has_routine c\n" +
+        "WHERE a.id = c.user_id\n" +
+        "AND b.id = c.routine_id\n" +
+        "AND a.id = :id";
+      sequelize.query(query, {
+        replacements: { id: '1' },
+        type: sequelize.QueryTypes.SELECT
+      })
+        .then(function (users) {
+          onSuccess(users)
+        })
+        .catch(function (reason) {
+          onError(reason);
+        })
     }
   }
 });

@@ -173,11 +173,33 @@ module.exports.getUserByUsernameAndPassword = function (req,res) {
     }
 
   },function (error) {
-    res.status(404).send("Error getting user");
+    res.status(404).send("Error getting user papa");
   })
 
 };
 
+/**
+ * Retrieve test
+ * @param req
+ * @param res
+ */
+module.exports.retrieveTest = function (req,res) {
+  var user = User.build();
+  user.retrieveTest(function (user) {
+    if (user) {
+      res.json({
+        message : "success",
+        data : user
+      });
+    } else {
+      res.status(404).send("User not found");
+    }
+
+  },function (error) {
+    res.status(404).send("Error getting user");
+  })
+
+};
 
 /**
  * Init a user

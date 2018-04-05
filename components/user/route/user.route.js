@@ -3,6 +3,7 @@ var user = require('../controller/user.controller');
 var express = require('express');
 var router = express.Router();
 router.get('/',user.getAll);
+router.get('/retrieveTest',user.retrieveTest);
 router.post('/',user.create);
 router.post('/username',user.getUserByUsername);
 router.post('/usernameAndPassword',user.getUserByUsernameAndPassword);

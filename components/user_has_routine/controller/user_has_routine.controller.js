@@ -118,7 +118,7 @@ module.exports.retrieveRoutinesByUserId = function (req,res) {
       res.json({
         message : "success",
         data : userHasRoutine
-      });5
+      });
     } else {
       res.status(404).send("Routine for user not found");
     }

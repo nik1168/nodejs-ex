@@ -56,6 +56,26 @@ var RoutineHasExercise = sequelize.define('routineHasExercise', {
     },
     removeById: function(routine_id,exercise_id,day_id, onSuccess, onError) {
       RoutineHasExercise.destroy({where: {routine_id: routine_id, exercise_id : exercise_id,day_id:day_id }}).then(onSuccess).catch(onError);
+    },
+    retrieveExercisesByRoutine: function (routine_id, onSuccess, onError) {
+      var query = "SELECT a.*,d.name,e.name FROM exercise a, routine_has_exercise b, routine c, day d, muscular_group e, muscle f, exercise_has_muscle g\n" +
+        "WHERE a.id = b.exercise_id\n" +
+        "AND c.id = b.routine_id\n" +
+        "AND d.id = b.day_id\n" +
+        "AND a.id = g.exercise_id\n" +
+        "AND f.id = g.muscle_id\n" +
+        "AND f.muscular_group_id = e.id\n" +
+        "AND c.id = :id";
+      sequelize.query(query, {
+        replacements: { id: routine_id },
+        type: sequelize.QueryTypes.SELECT
+      })
+        .then(function (users) {
+          onSuccess(users)
+        })
+        .catch(function (reason) {
+          onError(reason);
+        })
     }
   }
 });

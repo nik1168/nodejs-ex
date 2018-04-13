@@ -63,7 +63,7 @@ var User = sequelize.define('user', {
         .then(onSuccess).catch(onError);
     },
     retrieveTest : function (onSuccess, onError) {
-      var query = "SELECT b.* FROM user a, routine b, user_has_routine c\n" +
+      var query = "SELECT b.*,c.active FROM user a, routine b, user_has_routine c\n" +
         "WHERE a.id = c.user_id\n" +
         "AND b.id = c.routine_id\n" +
         "AND a.id = :id";

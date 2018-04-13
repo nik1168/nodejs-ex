@@ -38,8 +38,20 @@ var UserHasRoutine = sequelize.define('userHasRoutine', {
         .then(onSuccess).catch(onError);
     },
     retrieveRoutinesByUserId: function (user_id, onSuccess, onError) {
-      UserHasRoutine.find({where: {user_id: user_id}}, {raw: true})
-        .then(onSuccess).catch(onError);
+      var query = "SELECT b.*,c.active FROM user a, routine b, user_has_routine c\n" +
+        "WHERE a.id = c.user_id\n" +
+        "AND b.id = c.routine_id\n" +
+        "AND a.id = :id";
+      sequelize.query(query, {
+        replacements: { id: user_id },
+        type: sequelize.QueryTypes.SELECT
+      })
+        .then(function (users) {
+          onSuccess(users)
+        })
+        .catch(function (reason) {
+          onError(reason);
+        })
     },
     retrieveUsersByRoutine: function (routine_id, onSuccess, onError) {
       UserHasRoutine.find({where: {routine_id: routine_id}}, {raw: true})

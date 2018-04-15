@@ -7,7 +7,9 @@ var express = require('express'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'), // Body parser for api requests
   cors = require('cors'), // Handle CORS
-  config = require('./config'); // Config variables
+  config = require('./config'), // Config variables
+  docs = require('./config/swagger'),
+  swaggerSpec = docs();
   Object.assign = require('object-assign');
 
 //Middleware
@@ -48,12 +50,26 @@ app.set('superSecret', config.secret); // secret variable
 
 // Main Route
 app.get('/', function (req, res) {
-  res.send("hola");
+  // res.send("hola");
+  // res.sendFile(__dirname + "/public/api-docs/index.html");
+  if(process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT){
+    res.redirect("/api-docs/index-prod.html");
+  }
+  else{
+    res.redirect("/api-docs");
+  }
+
 });
 
 // Page count route
 app.get('/pagecount', function (req, res) {
   res.send('{ pageCount: -1 :) }');
+});
+
+// serve swagger
+app.get('/swagger.json', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
 });
 
 //API

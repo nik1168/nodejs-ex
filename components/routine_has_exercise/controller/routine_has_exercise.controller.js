@@ -108,6 +108,29 @@ module.exports.delete = function (req,res) {
   });
 };
 
+/**
+ * Retrieve exercises by routine id
+ * @param req
+ * @param res
+ */
+module.exports.retrieveExercisesByRoutine = function (req,res) {
+  var routineHasExercise = RoutineHasExercise.build();
+  routineHasExercise.retrieveExercisesByRoutine(req.params.routine_id, function(routineHasExercise) {
+    if (routineHasExercise) {
+      res.json({
+        message : "success",
+        data : routineHasExercise
+      });
+    } else {
+      res.status(404).send("Exercises not found for routine");
+    }
+  }, function(error) {
+    console.log("error en routine exercise");
+    console.log(error);
+    res.status(404).send("Error getting exercises for routne");
+  });
+};
+
 
 /**
  * Init routine has exercise

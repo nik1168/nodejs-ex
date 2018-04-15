@@ -139,7 +139,7 @@ module.exports.getByToken = function (req,res) {
  */
 module.exports.getUserByUsername = function (req,res) {
   var user = User.build();
-  user.retrieveByUsername(req.body.username,function (user) {
+  user.retrieveByUsername(req.query.username,function (user) {
     if (user) {
       res.json({
         message : "success",
@@ -155,11 +155,56 @@ module.exports.getUserByUsername = function (req,res) {
 
 };
 
+/**
+ * Gets user by username and password
+ * @param req
+ * @param res
+ */
+module.exports.getUserByUsernameAndPassword = function (req,res) {
+  var user = User.build();
+  user.retrieveByUsernameAndPassword(req.body.username, req.body.password, function (user) {
+    if (user) {
+      res.json({
+        message : "success",
+        data : user
+      });
+    } else {
+      res.status(404).send("User not found");
+    }
+
+  },function (error) {
+    res.status(404).send("Error getting user papa");
+  })
+
+};
+
+/**
+ * Retrieve Routine by user id
+ * @param req
+ * @param res
+ */
+module.exports.retrieveRoutineByUserId = function (req,res) {
+  var user = User.build();
+  user.retrieveRoutineByUserId(function (user) {
+    if (user) {
+      res.json({
+        message : "success",
+        data : user
+      });
+    } else {
+      res.status(404).send("User not found");
+    }
+
+  },function (error) {
+    res.status(404).send("Error getting user");
+  })
+
+};
 
 /**
  * Init a user
  * @param payload
- * @returns {{name: string}}
+ * @returns {{name: (*|string), lastName: ({type: string, xml: {name: string}}|spec.definitions.User.properties.lastName|{type, xml}|*|string), birthDate: (*|string), token: (*|token|number|string), username: (*|string), password: (*|string), email: (string|{type: string, xml: {name: string}}|spec.definitions.User.properties.email|{type, xml}|*|email), gender: (*|string), firstTime: (*|boolean), role_id: (*|User.role_id|{type, references}), image: (*|string), createdAt: number, modifiedAt: number}}
  */
 function initUser(payload) {
   return {
@@ -171,9 +216,9 @@ function initUser(payload) {
     password: payload.password || '',
     email : payload.email || '',
     gender : payload.gender || '',
-    firstTime : payload.firstTime || '',
+    firstTime : payload.firstTime || false,
     role_id : payload.role_id,
-    image : payload.image,
+    image : payload.image || '',
     createdAt : Date.now(),
     modifiedAt : Date.now()
   }

@@ -1,6 +1,6 @@
 
 module.exports = {
-  'secret': 'pierfitness',
+  'secret': 'smartfit',
   'databaseMongoDb': 'mongodb://localhost:27017/test',
   'mongoUrl' : process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
   'mongoServiceName' : process.env.DATABASE_SERVICE_NAME,

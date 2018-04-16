@@ -29,37 +29,27 @@ describe('Basic routes tests', function() {
 
     })
 });
-// describe('User test', function() {
-//
-//   it('GET to /user should return 200', function(done){
-//     chai.request(reqServer)
-//       .get('/user')
-//       .end(function(err, res) {
-//         res.should.have.status(200);
-//         done();
-//       })
-//
-//   });
-//
-//   // it('POST to /user should return 200', function(done){
-//   //   chai.request(reqServer)
-//   //     .post('/user')
-//   //     .send({
-//   //       name : '',
-//   //       lastName : '',
-//   //       birthDate :'',
-//   //       token : '',
-//   //       username: '',
-//   //       password: '',
-//   //       email : '',
-//   //       gender : '',
-//   //       firstTime : '',
-//   //       role_id : 1
-//   //     })
-//   //     .end(function(err, res) {
-//   //       res.should.have.status(200);
-//   //       done();
-//   //     })
-//   //
-//   // })
-// });
+describe('User test', function() {
+
+  it('GET to /user should return 200', function(done){
+    chai.request(reqServer)
+      .get('/user')
+      .set('X-API-Key', 'root')
+      .end(function(err, res) {
+        res.should.have.status(200);
+        done();
+      })
+
+  });
+
+  it('GET to /user should return 403 if no apikey is sent', function(done){
+    chai.request(reqServer)
+      .get('/user')
+      .end(function(err, res) {
+        res.should.have.status(403);
+        done();
+      })
+
+  });
+
+});

@@ -21,6 +21,8 @@ var router = express.Router();
  *     description: Returns all days
  *     produces:
  *       - application/json
+ *     security:
+ *       - api_key: []
  *     responses:
  *       200:
  *         description: An array of days

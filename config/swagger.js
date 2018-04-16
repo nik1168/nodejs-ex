@@ -6,8 +6,10 @@ module.exports = function () {
   var swaggerDefinition = {
     info: {
       title: 'Smart Fit API',
-      version: '1.0.0',
-      description: 'This is the API for smartfit papa'
+      version: '0.1.0',
+      description: 'API for smartfit mobile application',
+      contact : 'ngeisser32@gmail.com',
+      license : "MIT",
     },
     host: config.hostName || '0.0.0.0:8080',
     basePath: '/',
@@ -28,7 +30,7 @@ module.exports = function () {
     apis: [
       './components/user/route/user.route.js',
       './components/day/route/day.route.js',
-      './components/category/category/category.route.js'
+      './components/category/route/category.route.js'
     ]
   };
 

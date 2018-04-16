@@ -1,4 +1,5 @@
 var swaggerJSDoc = require('swagger-jsdoc');
+var config = require('./../config');
 // swagger definition
 
 module.exports = function () {
@@ -8,7 +9,7 @@ module.exports = function () {
       version: '1.0.0',
       description: 'This is the API for smartfit papa'
     },
-    host: '0.0.0.0:8080',
+    host: config.hostName || '0.0.0.0:8080',
     basePath: '/',
     securityDefinitions: {
       api_key : {

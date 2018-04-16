@@ -35,7 +35,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
+    "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js",
+    "cleanData" : "mysql -uroot -pcontrol123! < popdb/create.sql && mysql -uroot -pcontrol123! < popdb/populate.sql"
   },
   "repository": {
     "type": "git",

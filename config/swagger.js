@@ -27,7 +27,8 @@ module.exports = function () {
     // path to the API docs
     apis: [
       './components/user/route/user.route.js',
-      './components/day/route/day.route.js'
+      './components/day/route/day.route.js',
+      './components/category/category/category.route.js'
     ]
   };
 

@@ -59,6 +59,8 @@ var router = express.Router();
  *           $ref: '#/definitions/User'
  */
 router.get('/',user.getAll);
+
+
 /**
  * @swagger
  * /user/retrieveTest:
@@ -75,6 +77,9 @@ router.get('/',user.getAll);
  *         description: An array of routines
  */
 router.get('/retrieveTest',user.retrieveRoutineByUserId);
+
+
+
 /**
  * @swagger
  * /user:
@@ -98,6 +103,9 @@ router.get('/retrieveTest',user.retrieveRoutineByUserId);
  *         description: Successfully created
  */
 router.post('/',user.create);
+
+
+
 /**
  * @swagger
  * /user/username:
@@ -121,6 +129,9 @@ router.post('/',user.create);
  *         description: User found
  */
 router.get('/username',user.getUserByUsername);
+
+
+
 /**
  * @swagger
  * /user/usernameAndPassword:
@@ -144,6 +155,9 @@ router.get('/username',user.getUserByUsername);
  *         description: User found
  */
 router.post('/usernameAndPassword',user.getUserByUsernameAndPassword);
+
+
+
 /**
  * @swagger
  * /user/{user_id}:
@@ -167,6 +181,9 @@ router.post('/usernameAndPassword',user.getUserByUsernameAndPassword);
  *         description: User found
  */
 router.get('/:user_id',user.getById);
+
+
+
 /**
  * @swagger
  * /user/token/{token}:
@@ -190,6 +207,9 @@ router.get('/:user_id',user.getById);
  *         description: User found
  */
 router.get('/token/:token',user.getByToken);
+
+
+
 /**
  * @swagger
  * /user/{user_id}:
@@ -204,7 +224,7 @@ router.get('/token/:token',user.getByToken);
  *         in: path
  *         required: true
  *         schema:
- *           type: 'string'
+ *           type: 'integer'
  *       - name: user
  *         in: body
  *         required: true
@@ -218,6 +238,9 @@ router.get('/token/:token',user.getByToken);
  *         description: Successfully updated
  */
 router.put('/:user_id',user.update);
+
+
+
 /**
  * @swagger
  * /user/{user_id}:
@@ -240,4 +263,6 @@ router.put('/:user_id',user.update);
  *         description: Successfully deleted
  */
 router.delete('/:user_id',user.delete);
+
+
 module.exports = router;

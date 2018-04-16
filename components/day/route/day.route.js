@@ -111,7 +111,7 @@ router.put('/:day_id',day.update);
  * /day/{day_id}:
  *   delete:
  *     tags:
- *       - Days
+ *       - Day
  *     description: Deletes a single day
  *     produces:
  *       - application/json

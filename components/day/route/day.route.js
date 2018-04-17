@@ -121,7 +121,7 @@ router.put('/:day_id',day.update);
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: id
+ *       - name: day_id
  *         description: Day's id
  *         in: path
  *         required: true

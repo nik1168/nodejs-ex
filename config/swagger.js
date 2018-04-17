@@ -32,7 +32,8 @@ module.exports = function () {
       './components/day/route/day.route.js',
       './components/category/route/category.route.js',
       './components/device/route/device.route.js',
-      './components/diet/route/diet.route.js'
+      './components/diet/route/diet.route.js',
+      './components/exercise/route/exercise.route.js'
     ]
   };
 

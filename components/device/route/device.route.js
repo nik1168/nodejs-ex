@@ -127,7 +127,7 @@ router.put('/:device_id', device.update);
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: id
+ *       - name: device_id
  *         description: Device's id
  *         in: path
  *         required: true

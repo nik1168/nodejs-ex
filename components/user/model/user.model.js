@@ -82,6 +82,24 @@ var User = sequelize.define('user', {
   }
 });
 
+function initUser(payload) {
+  return {
+    name : payload.name || '',
+    lastName : payload.lastName || '',
+    birthDate : payload.birthDate || '',
+    token : payload.token || '',
+    username: payload.username || '',
+    password: payload.password || '',
+    email : payload.email || '',
+    gender : payload.gender || '',
+    firstTime : payload.firstTime || false,
+    role_id : payload.role_id,
+    image : payload.image || '',
+    createdAt : Date.now(),
+    modifiedAt : Date.now()
+  }
+}
+
 /**
  * Builds a user
  * @param self
@@ -105,4 +123,5 @@ function buildUser(self) {
   }
 }
 User.belongsTo(Role,{foreignKey:'role_id'});
+module.exports.initUser = initUser;
 module.exports.user = User;

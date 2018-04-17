@@ -1,5 +1,6 @@
 'use strict';
 var User = require('../model/user.model').user;
+var initUser = require('../model/user.model').initUser;
 
 /**
  * Creates a new user

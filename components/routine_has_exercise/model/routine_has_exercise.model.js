@@ -7,7 +7,8 @@ var Day = require('../../day/model/day.model').day;
 var RoutineHasExercise = sequelize.define('routineHasExercise', {
   id : {
     type:DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   routine_id : {
     type : DataTypes.INTEGER,

@@ -6,7 +6,8 @@ var Role = require('../../role/model/role.model').role;
 var User = sequelize.define('user', {
   id : {
     type:DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   name : DataTypes.STRING,
   lastName : DataTypes.STRING,

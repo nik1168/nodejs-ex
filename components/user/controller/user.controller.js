@@ -16,9 +16,10 @@ module.exports.create = function (req, res) {
       });
     },
     function (error) {
-    console.log("error");
-    console.log(error);
-      res.status(404).send("Error creating user");
+      res.status(404).json({
+        message: 'Error creating user',
+        error: error
+      });
     })
 };
 
@@ -36,12 +37,16 @@ module.exports.getAll = function (req, res) {
         data : users
       });
     } else {
-      res.status(404).send("No users were found");
+      res.status(404).json({
+        message: 'No users were found',
+        error: ''
+      });
     }
   }, function(error) {
-    console.log("ERROR");
-    console.log(error);
-    res.status(404).send("Error getting users");
+    res.status(404).json({
+      message: 'Error getting users',
+      error: error
+    });
   });
 };
 
@@ -61,12 +66,16 @@ module.exports.update = function (req,res) {
         data : user
       });
     } else {
-      res.status(404).send("User not found");
+      res.status(404).json({
+        message: 'User not found',
+        error: ''
+      });
     }
   }, function(error) {
-    console.log("error updating user");
-    console.log(error);
-    res.status(404).send("Error updating user");
+    res.status(404).json({
+      message: 'Error updating user',
+      error: error
+    });
   });
 };
 
@@ -84,10 +93,16 @@ module.exports.getById = function (req,res) {
         data : user
       });
     } else {
-      res.status(404).send("User not found");
+      res.status(404).json({
+        message: 'User not found',
+        error: ''
+      });
     }
   }, function(error) {
-    res.status(404).send("Error getting user");
+    res.status(404).json({
+      message: 'Error getting user',
+      error: error
+    });
   });
 };
 
@@ -104,10 +119,16 @@ module.exports.delete = function (req,res) {
         message: 'User removed!'
       });
     } else {
-      res.status(404).send("User not found");
+      res.status(404).json({
+        message: 'User not found',
+        error: ''
+      });
     }
   }, function(error) {
-    res.status(404).send("Error removing user");
+    res.status(404).json({
+      message: 'Error removing user',
+      error: error
+    });
   });
 };
 
@@ -125,10 +146,16 @@ module.exports.getByToken = function (req,res) {
         data : user
       });
     } else {
-      res.status(404).send("User not found");
+      res.status(404).json({
+        message: 'User not found',
+        error: ''
+      });
     }
   }, function(error) {
-    res.status(404).send("Error getting user");
+    res.status(404).json({
+      message: 'Error getting user',
+      error: error
+    });
   });
 };
 
@@ -146,11 +173,17 @@ module.exports.getUserByUsername = function (req,res) {
         data : user
       });
     } else {
-      res.status(404).send("User not found");
+      res.status(404).json({
+        message: 'User not found',
+        error: ''
+      });
     }
 
   },function (error) {
-    res.status(404).send("Error getting user");
+    res.status(404).json({
+      message: 'Error getting user',
+      error: error
+    });
   })
 
 };
@@ -169,11 +202,17 @@ module.exports.getUserByUsernameAndPassword = function (req,res) {
         data : user
       });
     } else {
-      res.status(404).send("User not found");
+      res.status(404).json({
+        message: 'User not found',
+        error: ''
+      });
     }
 
   },function (error) {
-    res.status(404).send("Error getting user papa");
+    res.status(404).json({
+      message: 'Error getting user',
+      error: error
+    });
   })
 
 };
@@ -192,11 +231,17 @@ module.exports.retrieveRoutineByUserId = function (req,res) {
         data : user
       });
     } else {
-      res.status(404).send("User not found");
+      res.status(404).json({
+        message: 'User not found',
+        error: ''
+      });
     }
 
   },function (error) {
-    res.status(404).send("Error getting user");
+    res.status(404).json({
+      message: 'Error getting user',
+      error: error
+    });
   })
 
 };

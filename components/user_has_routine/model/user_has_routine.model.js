@@ -6,7 +6,8 @@ var Routine = require('../../routine/model/routine.model').routine;
 var UserHasRoutine = sequelize.define('userHasRoutine', {
   id: {
     type: DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   user_id: {
     type: DataTypes.INTEGER,

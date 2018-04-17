@@ -4,7 +4,8 @@ var sequelize = require('../../../config/sequelize').db;
 var Category = sequelize.define('category', {
   id : {
     type:DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   name : {
     type : DataTypes.STRING,

@@ -5,7 +5,8 @@ var MuscularGroup = require('../../muscular_group/model/muscular_group.model').m
 var Muscle = sequelize.define('muscle', {
   id : {
     type:DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   name : {
     type : DataTypes.STRING,

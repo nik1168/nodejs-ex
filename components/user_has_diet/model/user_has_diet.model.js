@@ -6,7 +6,8 @@ var Diet = require('../../diet/model/diet.model').diet;
 var UserHasDiet = sequelize.define('userHasDiet', {
   id: {
     type: DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   user_id: {
     type: DataTypes.INTEGER,

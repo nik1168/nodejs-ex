@@ -6,7 +6,8 @@ var Category = require('../../category/model/category.model').category;
 var Post = sequelize.define('post', {
   id : {
     type:DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   title : DataTypes.STRING,
   content : DataTypes.TEXT,

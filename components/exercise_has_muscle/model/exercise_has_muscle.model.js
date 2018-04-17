@@ -6,7 +6,8 @@ var Muscle = require('../../muscle/model/muscle.model').muscle;
 var ExerciseHasMuscle = sequelize.define('exerciseHasMuscle', {
   id : {
     type:DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   exercise_id : {
     type : DataTypes.INTEGER,

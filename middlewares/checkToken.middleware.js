@@ -2,7 +2,7 @@ var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('../config/env/openshift');
 module.exports.middleware = function (req,res,next) {
   // check header or url parameters or post parameters for token
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  var token =  req.query.token || req.headers['x-access-token'];
   var apikey = req.body.api_key || req.query.api_key || req.headers['x-api-key'] || req.headers['api_key'];
 
   // decode token

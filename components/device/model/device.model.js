@@ -6,7 +6,8 @@ var Os = require('../../os/model/os.model').os;
 var Device = sequelize.define('device', {
   id : {
     type:DataTypes.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   user_id : {
     type : DataTypes.INTEGER,

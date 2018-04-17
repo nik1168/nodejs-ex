@@ -65,6 +65,10 @@ var Device = sequelize.define('device', {
     },
     removeById: function(device_id, onSuccess, onError) {
       Device.destroy({where: {id: device_id}}).then(onSuccess).catch(onError);
+    },
+    retrieveByUserId: function(user_id, onSuccess, onError) {
+      Device.find({where: {user_id: user_id}}, {raw: true})
+        .then(onSuccess).catch(onError);
     }
   }
 });

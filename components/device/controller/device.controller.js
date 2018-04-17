@@ -107,6 +107,27 @@ module.exports.delete = function (req,res) {
   });
 };
 
+/**
+ * Gets all devices by user id
+ * @param req
+ * @param res
+ */
+module.exports.retrieveByUserId = function (req,res) {
+  var device = Device.build();
+  device.retrieveByUserId(req.params.user_id, function(devices) {
+    if (device) {
+      res.json({
+        message : "success",
+        data : devices
+      });
+    } else {
+      res.status(404).send("Device not found");
+    }
+  }, function(error) {
+    res.status(404).send("Error getting device");
+  });
+};
+
 
 /**
  * Init a device

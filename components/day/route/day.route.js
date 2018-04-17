@@ -31,6 +31,7 @@ var router = express.Router();
  */
 router.get('/',day.getAll);
 
+
 /**
  * @swagger
  * /day:
@@ -54,6 +55,7 @@ router.get('/',day.getAll);
  *         description: Successfully created
  */
 router.post('/',day.create);
+
 
 /**
  * @swagger
@@ -79,9 +81,10 @@ router.post('/',day.create);
  */
 router.get('/:day_id',day.getById);
 
+
 /**
  * @swagger
- * /day/{category_id}:
+ * /day/{day_id}:
  *   put:
  *     tags:
  *       - Day

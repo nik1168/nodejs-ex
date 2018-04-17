@@ -16,6 +16,7 @@ var User = sequelize.define('user', {
   username: DataTypes.STRING,
   password: DataTypes.STRING,
   email: DataTypes.STRING,
+  phoneNumber: DataTypes.STRING,
   gender : DataTypes.STRING,
   firstTime : DataTypes.BOOLEAN,
   role_id : {
@@ -91,6 +92,7 @@ function initUser(payload) {
     username: payload.username || '',
     password: payload.password || '',
     email : payload.email || '',
+    phoneNumber : payload.phoneNumber || '',
     gender : payload.gender || '',
     firstTime : payload.firstTime || false,
     role_id : payload.role_id,
@@ -114,6 +116,7 @@ function buildUser(self) {
     username: self.username,
     password: self.password,
     email : self.email,
+    phoneNumber : self.phoneNumber,
     gender : self.gender,
     firstTime : self.firstTime,
     role_id : self.role_id,

@@ -34,7 +34,7 @@ INSERT INTO smartfit.muscular_group (id, name, createdAt, modifiedAt) VALUES (6,
 INSERT INTO smartfit.exercise (id, name, createdAt, modifiedAt) VALUES (1, 'press de banca', '2018-04-01 21:02:56', '2018-04-01 21:02:57');
 
 
-INSERT INTO smartfit.user (id, name, lastName, birthDate, token, role_id, username, password, email, gender, firstTime, image, createdAt, modifiedAt) VALUES (1, 'Niklaus', 'Geisser', '1994-01-26', 'qw', 2, 'nik1168', 'nik1168', 'ngeisser32@gmail.com', 'male', 1, 'https://pbs.twimg.com/profile_images/645602189403127808/biebd09F_400x400.jpg', '2018-04-01 21:05:35', '2018-04-01 21:05:37');
+INSERT INTO smartfit.user (id, name, lastName, birthDate, token, role_id, username, password, email, phoneNumber, gender, firstTime, image, createdAt, modifiedAt) VALUES (1, 'Niklaus', 'Geisser', '1994-01-26', 'qw', 2, 'nik1168', 'nik1168', 'ngeisser32@gmail.com', '72095530', 'male', 1, 'https://pbs.twimg.com/profile_images/645602189403127808/biebd09F_400x400.jpg', '2018-04-01 21:05:35', '2018-04-01 21:05:37');
 
 
 INSERT INTO smartfit.posts (id, title, content, image, category_id, createdAt, modifiedAt, video) VALUES (1, 'Quieres tener un abdomen plano?', 'Esta es la mejor dieta para poder tener el abdomen plano, consiste de lo siguiente:', null, 1, '2018-04-01 21:14:12', '2018-04-01 21:14:14', '');

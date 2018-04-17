@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `smartfit`.`user` (
   `username` VARCHAR(255) NULL,
   `password` VARCHAR(255) NULL,
   `email` VARCHAR(255) NULL,
+  `phoneNumber` VARCHAR(255) NULL,
   `gender` VARCHAR(255) NULL,
   `firstTime` TINYINT(1) NULL,
   `image` VARCHAR(255) NULL,

@@ -31,7 +31,8 @@ module.exports = function () {
       './components/user/route/user.route.js',
       './components/day/route/day.route.js',
       './components/category/route/category.route.js',
-      './components/device/route/device.route.js'
+      './components/device/route/device.route.js',
+      './components/diet/route/diet.route.js'
     ]
   };
 

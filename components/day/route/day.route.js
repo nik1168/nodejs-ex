@@ -88,7 +88,7 @@ router.get('/:day_id',day.getById);
  *   put:
  *     tags:
  *       - Day
- *     description: Updates a single category
+ *     description: Updates a single day
  *     produces: application/json
  *     parameters:
  *       - name: day_id

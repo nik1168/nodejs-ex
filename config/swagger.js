@@ -34,7 +34,8 @@ module.exports = function () {
       './components/device/route/device.route.js',
       './components/diet/route/diet.route.js',
       './components/exercise/route/exercise.route.js',
-      './components/exercise_has_muscle/route/exercise_has_muscle.route.js'
+      './components/exercise_has_muscle/route/exercise_has_muscle.route.js',
+      './components/muscular_group/route/muscular_group.route.js'
     ]
   };
 

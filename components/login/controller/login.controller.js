@@ -8,7 +8,7 @@ module.exports.authenticate = function (req,res) {
       console.log("success retrieve by username and password");
       console.log(user);
       if(!user){
-        res.json({ success: false, message: 'Authentication failed. User not found.' });
+        res.status(404).json({ success: false, message: 'Authentication failed. User not found.' });
       }else{
         var userReponse = user.dataValues;
         var token = jwt.sign(userReponse, config.secret, {
@@ -23,7 +23,7 @@ module.exports.authenticate = function (req,res) {
 
       }
     },function (error) {
-      res.json({ success: false, message: ''+error });
+      res.status(404).json({ success: false, message: ''+error });
     });
 };
 

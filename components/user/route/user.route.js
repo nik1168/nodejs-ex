@@ -2,6 +2,7 @@
 var user = require('../controller/user.controller');
 var express = require('express');
 var router = express.Router();
+
 /**
  * @swagger
  * definitions:

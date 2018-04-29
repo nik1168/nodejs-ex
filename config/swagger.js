@@ -41,7 +41,8 @@ module.exports = function () {
       './components/login/route/login.route.js',
       './components/role/route/role.route.js',
       './components/routine/route/routine.route.js',
-      './components/muscle/route/muscle.route.js'
+      './components/muscle/route/muscle.route.js',
+      './components/user_has_routine/route/user_has_routine.route.js'
     ]
   };
 

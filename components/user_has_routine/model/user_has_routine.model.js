@@ -55,8 +55,20 @@ var UserHasRoutine = sequelize.define('userHasRoutine', {
         })
     },
     retrieveUsersByRoutine: function (routine_id, onSuccess, onError) {
-      UserHasRoutine.find({where: {routine_id: routine_id}}, {raw: true})
-        .then(onSuccess).catch(onError);
+      var query = "SELECT a.* FROM user a, routine b, user_has_routine c\n" +
+        "WHERE a.id = c.user_id\n" +
+        "AND b.id = c.routine_id\n" +
+        "AND b.id = :id";
+      sequelize.query(query, {
+        replacements: { id: routine_id },
+        type: sequelize.QueryTypes.SELECT
+      })
+        .then(function (users) {
+          onSuccess(users)
+        })
+        .catch(function (reason) {
+          onError(reason);
+        })
     },
     add: function (onSuccess, onError) {
       UserHasRoutine.build(buildUserHasRoutine(this))

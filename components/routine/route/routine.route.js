@@ -141,7 +141,7 @@ router.delete('/:routine_id',routine.delete);
 
 /**
  * @swagger
- * /routine/{user_id}:
+ * /routine/user/{user_id}:
  *   get:
  *     tags:
  *       - Routine
@@ -162,7 +162,7 @@ router.delete('/:routine_id',routine.delete);
  *         schema:
  *           $ref: '#/definitions/Routine'
  */
-router.get('/:user_id',routine.getByUserId);
+router.get('/user/:user_id',routine.getByUserId);
 
 module.exports = router;
 

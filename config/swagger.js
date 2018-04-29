@@ -39,7 +39,8 @@ module.exports = function () {
       './components/os/route/os.route.js',
       './components/post/route/post.route.js',
       './components/login/route/login.route.js',
-      './components/role/route/role.route.js'
+      './components/role/route/role.route.js',
+      './components/routine/route/routine.route.js'
     ]
   };
 

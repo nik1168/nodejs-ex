@@ -89,6 +89,27 @@ module.exports.getById = function (req, res) {
 };
 
 /**
+ * Gets a single routine
+ * @param req
+ * @param res
+ */
+module.exports.getByUserId = function (req, res) {
+  var routine = Routine.build();
+  routine.retrieveByUserId(req.params.user_id, function (routine) {
+    if (routine) {
+      res.json({
+        message: "success",
+        data: routine
+      });
+    } else {
+      res.status(404).send("User not found");
+    }
+  }, function (error) {
+    res.status(404).send("Error getting routine");
+  });
+};
+
+/**
  * Delete a routine by id
  * @param req
  * @param res

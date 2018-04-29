@@ -40,7 +40,8 @@ module.exports = function () {
       './components/post/route/post.route.js',
       './components/login/route/login.route.js',
       './components/role/route/role.route.js',
-      './components/routine/route/routine.route.js'
+      './components/routine/route/routine.route.js',
+      './components/muscle/route/muscle.route.js'
     ]
   };
 

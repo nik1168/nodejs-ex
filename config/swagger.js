@@ -42,7 +42,9 @@ module.exports = function () {
       './components/role/route/role.route.js',
       './components/routine/route/routine.route.js',
       './components/muscle/route/muscle.route.js',
-      './components/user_has_routine/route/user_has_routine.route.js'
+      './components/user_has_routine/route/user_has_routine.route.js',
+      './components/routine_has_exercise/route/routine_has_exercise.route.js',
+      './components/user_has_diet/route/user_has_diet.route.js'
     ]
   };
 

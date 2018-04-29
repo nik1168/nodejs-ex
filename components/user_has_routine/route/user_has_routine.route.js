@@ -92,7 +92,7 @@ router.get('/:user_has_routine_id',userHasRoutine.getById);
 
 /**
  * @swagger
- * /userHasRoutine/user/{user_id}:
+ * /userHasRoutine/routines/{user_id}:
  *   get:
  *     tags:
  *       - UserHasRoutine
@@ -112,11 +112,11 @@ router.get('/:user_has_routine_id',userHasRoutine.getById);
  *       200:
  *         description: Routines found
  */
-router.get('/:user_id',userHasRoutine.retrieveRoutinesByUserId);
+router.get('routines/:user_id',userHasRoutine.retrieveRoutinesByUserId);
 
 /**
  * @swagger
- * /userHasRoutine/routine/{routine_id}:
+ * /userHasRoutine/users/{routine_id}:
  *   get:
  *     tags:
  *       - UserHasRoutine
@@ -136,7 +136,7 @@ router.get('/:user_id',userHasRoutine.retrieveRoutinesByUserId);
  *       200:
  *         description: Users found
  */
-router.get('/routine/:routine_id',userHasRoutine.retrieveUsersByRoutine);
+router.get('/users/:routine_id',userHasRoutine.retrieveUsersByRoutine);
 
 
 /**

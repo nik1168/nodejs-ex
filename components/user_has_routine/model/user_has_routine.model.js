@@ -44,7 +44,7 @@ var UserHasRoutine = sequelize.define('userHasRoutine', {
         "AND b.id = c.routine_id\n" +
         "AND a.id = :id";
       sequelize.query(query, {
-        replacements: { id: user_id },
+        replacements: {id: user_id},
         type: sequelize.QueryTypes.SELECT
       })
         .then(function (users) {
@@ -60,7 +60,7 @@ var UserHasRoutine = sequelize.define('userHasRoutine', {
         "AND b.id = c.routine_id\n" +
         "AND b.id = :id";
       sequelize.query(query, {
-        replacements: { id: routine_id },
+        replacements: {id: routine_id},
         type: sequelize.QueryTypes.SELECT
       })
         .then(function (users) {
@@ -99,7 +99,7 @@ function buildUserHasRoutine(self) {
   }
 }
 
-UserHasRoutine.belongsTo(User,{foreignKey:'user_id'});
-UserHasRoutine.belongsTo(Routine,{foreignKey:'routine_id'});
+UserHasRoutine.belongsTo(User, {foreignKey: 'user_id'});
+UserHasRoutine.belongsTo(Routine, {foreignKey: 'routine_id'});
 
 module.exports.userHasRoutine = UserHasRoutine;

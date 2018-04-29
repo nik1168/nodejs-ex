@@ -87,6 +87,49 @@ module.exports.getById = function (req,res) {
 };
 
 /**
+ * Gets a single diet for a user based on user id
+ * @param req
+ * @param res
+ */
+module.exports.retrieveDietsByUserId = function (req,res) {
+  var userHasDiet = UserHasDiet.build();
+  userHasDiet.retrieveDietsByUser(req.params.user_id, function(userHasDiet) {
+    if (userHasDiet) {
+      res.json({
+        message : "success",
+        data : userHasDiet
+      });
+    } else {
+      res.status(404).send("UserHasDiet not found");
+    }
+  }, function(error) {
+    res.status(404).send("Error getting userHasDiet");
+  });
+};
+
+
+/**
+ * Gets a single diet for a user based on user id
+ * @param req
+ * @param res
+ */
+module.exports.retrieveUsersByDiet = function (req,res) {
+  var userHasDiet = UserHasDiet.build();
+  userHasDiet.retrieveUsersByDiet(req.params.diet_id, function(userHasDiet) {
+    if (userHasDiet) {
+      res.json({
+        message : "success",
+        data : userHasDiet
+      });
+    } else {
+      res.status(404).send("UserHasDiet not found");
+    }
+  }, function(error) {
+    res.status(404).send("Error getting userHasDiet");
+  });
+};
+
+/**
  * Delete a a diet for a user by id
  * @param req
  * @param res

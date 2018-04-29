@@ -38,13 +38,37 @@ var UserHasDiet = sequelize.define('userHasDiet', {
       UserHasDiet.find({where: {id: user_has_diet_id}}, {raw: true})
         .then(onSuccess).catch(onError);
     },
-    retrieveDietsByUserId: function (user_id, onSuccess, onError) {
-      UserHasDiet.findAll({where: {user_id: user_id}}, {raw: true})
-        .then(onSuccess).catch(onError);
+    retrieveDietsByUser: function (user_id, onSuccess, onError) {
+      var query = "SELECT b.* FROM user a, diet b, user_has_diet c\n" +
+        "WHERE a.id = c.user_id\n" +
+        "AND b.id = c.diet_id\n" +
+        "AND a.id = :id";
+      sequelize.query(query, {
+        replacements: {id: user_id},
+        type: sequelize.QueryTypes.SELECT
+      })
+        .then(function (users) {
+          onSuccess(users)
+        })
+        .catch(function (reason) {
+          onError(reason);
+        })
     },
     retrieveUsersByDiet: function (diet_id, onSuccess, onError) {
-      UserHasDiet.findAll({where: {diet_id: diet_id}}, {raw: true})
-        .then(onSuccess).catch(onError);
+      var query = "SELECT a.* FROM user a, diet b, user_has_diet c\n" +
+        "WHERE a.id = c.user_id\n" +
+        "AND b.id = c.diet_id\n" +
+        "AND b.id = :id";
+      sequelize.query(query, {
+        replacements: {id: diet_id},
+        type: sequelize.QueryTypes.SELECT
+      })
+        .then(function (users) {
+          onSuccess(users)
+        })
+        .catch(function (reason) {
+          onError(reason);
+        })
     },
     add: function (onSuccess, onError) {
       UserHasDiet.build(buildUserHasDiet(this))

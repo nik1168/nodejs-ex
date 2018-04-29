@@ -139,7 +139,7 @@ module.exports.retrieveUsersByRoutine = function (req,res) {
       res.json({
         message : "success",
         data : userHasRoutine
-      });5
+      });
     } else {
       res.status(404).send("Users for that routine not found");
     }

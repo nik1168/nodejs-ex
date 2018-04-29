@@ -3,6 +3,15 @@ var routine = require('../controller/routine.controller');
 var express = require('express');
 var router = express.Router();
 
+/**
+ * @swagger
+ * definitions:
+ *   Routine:
+ *     properties:
+ *       name:
+ *         type: string
+ */
+
 router.get('/',routine.getAll);
 router.post('/',routine.create);
 router.get('/:routine_id',routine.getById);

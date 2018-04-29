@@ -38,7 +38,8 @@ module.exports = function () {
       './components/muscular_group/route/muscular_group.route.js',
       './components/os/route/os.route.js',
       './components/post/route/post.route.js',
-      './components/login/route/login.route.js'
+      './components/login/route/login.route.js',
+      './components/role/route/role.route.js'
     ]
   };
 

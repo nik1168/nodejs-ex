@@ -29,7 +29,7 @@ describe('Users', function () {
         .set('X-API-Key', 'root')
         .end(function (err, res) {
           res.should.have.status(200);
-          res.body.data.should.be.a('array');
+          res.body.users.should.be.a('array');
           res.body.should.have.property('message');
           res.body.should.be.a('object');
           done();

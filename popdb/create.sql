@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `smartfit`.`user` (
   `name` VARCHAR(255) NULL,
   `lastName` VARCHAR(255) NULL,
   `birthDate` DATE NULL,
-  `token` VARCHAR(255) NULL,
+  `token` VARCHAR(2000) NULL,
   `role_id` INT NOT NULL,
   `username` VARCHAR(255) NULL,
   `password` VARCHAR(255) NULL,

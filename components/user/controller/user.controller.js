@@ -35,7 +35,7 @@ module.exports.getAll = function (req, res) {
     if (users) {
       res.json({
         message : "success",
-        data : users
+        users : users
       });
     } else {
       res.status(404).json({

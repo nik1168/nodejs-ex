@@ -17,6 +17,12 @@ var router = express.Router();
  *        password:
  *          type: string
  *          example: "nik1168"
+ *   Token:
+ *      properties:
+ *        token:
+ *          type: string
+ *          example: "fwfwerfwerfqwfq"
+ *
  */
 
 /**
@@ -42,4 +48,28 @@ var router = express.Router();
  *         description: Authenticated successfully
  */
 router.post('/',login.authenticate);
+
+/**
+ * @swagger
+ * /login/token:
+ *   post:
+ *     tags:
+ *       - Login
+ *     description: Authenticates a user
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: token
+ *         description: User's token
+ *         in: body
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/Token'
+ *     security:
+ *       - api_key: []
+ *     responses:
+ *       200:
+ *         description: Authenticated successfully
+ */
+router.post('/token',login.renewToken);
 module.exports = router;

@@ -45,6 +45,10 @@ var User = sequelize.define('user', {
       User.find({where: {username: username}}, {raw: true})
         .then(onSuccess).catch(onError);
     },
+    retrieveByEmail: function (email, onSuccess, onError) {
+      User.find({where: {email: email}}, {raw: true})
+        .then(onSuccess).catch(onError);
+    },
     retrieveByToken: function (token, onSuccess, onError) {
       User.find({where: {token: token}}, {raw: true})
         .then(onSuccess).catch(onError);

@@ -12,5 +12,6 @@ module.exports = {
   'database' : process.env.MYSQL_DATABASE || 'smartfit',
   'password' : process.env.MYSQL_PASSWORD || 'control123!',
   'connectionUrl' : '',
+  'oauthFacebookInfo' : 'https://graph.facebook.com/me',
   'saltRounds' : 10
 };

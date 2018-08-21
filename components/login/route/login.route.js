@@ -22,6 +22,11 @@ var router = express.Router();
  *        token:
  *          type: string
  *          example: "fwfwerfwerfqwfq"
+ *   Access_token:
+ *      properties:
+ *        access_token:
+ *          type: string
+ *          example: "asf;aLFJLKJFOSDIAEFHIUAWRFAIUEFBAISUDBFIAUSDF"
  *
  */
 
@@ -72,4 +77,28 @@ router.post('/',login.authenticate);
  *         description: Authenticated successfully
  */
 router.post('/token',login.renewToken);
+
+/**
+ * @swagger
+ * /login/userFacebookInfo:
+ *   post:
+ *     tags:
+ *       - Login
+ *     description: Gets user info from FB
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: access_token
+ *         description: User's access_token
+ *         in: body
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/Access_token'
+ *     security:
+ *       - api_key: []
+ *     responses:
+ *       200:
+ *         description: User information
+ */
+router.post('/userFacebookInfo',login.getFacebookUserInfo);
 module.exports = router;

@@ -4,6 +4,7 @@
   "description": "Node.js sample app for OpenShift 3",
   "main": "server.js",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt": "^1.0.2",
     "body-parser": "~1.15.2",
     "chai": "^3.5.0",
@@ -36,8 +37,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js",
-    "cleanData" : "mysql -uroot -pcontrol123! < popdb/create.sql && mysql -uroot -pcontrol123! < popdb/populate.sql",
-    "cleanDataOpen" : "mysql -u$MYSQL_USER -p$MYSQL_PASSWORD < popdb/create.sql && mysql -u$MYSQL_USER -p$MYSQL_PASSWORD < popdb/populate.sql"
+    "cleanData": "mysql -uroot -pcontrol123! < popdb/create.sql && mysql -uroot -pcontrol123! < popdb/populate.sql",
+    "cleanDataOpen": "mysql -u$MYSQL_USER -p$MYSQL_PASSWORD < popdb/create.sql && mysql -u$MYSQL_USER -p$MYSQL_PASSWORD < popdb/populate.sql"
   },
   "repository": {
     "type": "git",

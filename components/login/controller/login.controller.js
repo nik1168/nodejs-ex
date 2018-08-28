@@ -66,7 +66,7 @@ module.exports.renewToken = function (req, res) {
 };
 
 /**
- * Get user information
+ * Get user information from facebook
  * @param req
  * @param res
  */
@@ -80,6 +80,7 @@ module.exports.getFacebookUserInfo = function (req, res) {
       var userFacebook = response.data;
       var userFacebookProfilePicture = userFacebook.picture.data.url;
       userBuild.retrieveByEmail(userFacebook.email, function (user) {
+        if(user){
           var userResponse = user.dataValues;
           var token = signToken(userResponse);
           updateUser(userBuild, {token: token, image: userFacebookProfilePicture});
@@ -90,9 +91,56 @@ module.exports.getFacebookUserInfo = function (req, res) {
               message: 'Enjoy your token!',
               token: token
             });
-          }, function () {
+          }, function (error) {
             res.status(404).json({success: false, message: error.toString()});
           })
+        }
+        else{
+          res.status(404).json({success: false, message: 'User not found'});
+        }
+        },
+        function (error) {
+          res.status(404).json({success: false, message: error.toString()});
+        });
+    })
+    .catch(function (error) {
+      res.status(404).json({success: false, message: error.toString()});
+    })
+};
+
+/**
+ * Get user information with google
+ * @param req
+ * @param res
+ */
+module.exports.getGoogleUserInfo = function (req, res) {
+  var ACCESS_TOKEN = req.body.access_token;
+  var url = 'https://www.googleapis.com/userinfo/v2/me';
+  var userBuild = User.build();
+  restClient.getGoogleUserInfo(url, ACCESS_TOKEN)
+    .then(function (response) {
+      var userGoogle = response.data;
+      var userGoogleProfilePicture = userGoogle.picture;
+      userBuild.retrieveByEmail(userGoogle.email, function (user) {
+       if(user){
+         var userResponse = user.dataValues;
+         var token = signToken(userResponse);
+         updateUser(userBuild, {token: token, image: userGoogleProfilePicture});
+         userBuild.updateById(userResponse.id, function () {
+           // return the information including token as JSON
+           res.json({
+             success: true,
+             message: 'Enjoy your token!',
+             token: token
+           });
+         }, function (error) {
+           res.status(404).json({success: false, message: error.toString()});
+         })
+       }
+       else{
+         res.status(404).json({success: false, message: 'User not found'});
+       }
+
         },
         function (error) {
           res.status(404).json({success: false, message: error.toString()});

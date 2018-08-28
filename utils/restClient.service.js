@@ -9,18 +9,36 @@ var axios = require('axios');
  */
 module.exports.getFBUserInfo = function (url) {
   return new Promise(function (resolve, reject) {
-    console.log("url", url);
     axios.get(url)
       .then(function (response) {
-        console.log("response");
         resolve(response);
       })
       .catch(function (error) {
-        console.log("error", error);
         reject(error);
       })
       .then(function (value) {
-        console.log("extecuted");
+      })
+  })
+};
+
+/**
+ * Get user information from google
+ * @param url
+ * @param access_token
+ * @returns {Promise<any>}
+ */
+module.exports.getGoogleUserInfo = function (url, access_token) {
+  return new Promise(function (resolve, reject) {
+    axios.get(url, {
+      headers: {'Authorization': 'Bearer '+access_token+''}
+    })
+      .then(function (response) {
+        resolve(response);
+      })
+      .catch(function (error) {
+        reject(error);
+      })
+      .then(function (value) {
       })
   })
 };

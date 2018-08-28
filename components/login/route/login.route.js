@@ -101,4 +101,29 @@ router.post('/token',login.renewToken);
  *         description: User information
  */
 router.post('/userFacebookInfo',login.getFacebookUserInfo);
+
+/**
+ * @swagger
+ * /login/getGoogleUserInfo:
+ *   post:
+ *     tags:
+ *       - Login
+ *     description: Gets user info from Google
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: access_token
+ *         description: User's access_token
+ *         in: body
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/Access_token'
+ *     security:
+ *       - api_key: []
+ *     responses:
+ *       200:
+ *         description: User information
+ */
+router.post('/userGoogleInfo',login.getGoogleUserInfo);
+
 module.exports = router;

@@ -24,7 +24,8 @@ module.exports.authenticate = function (req, res) {
         res.json({
           success: true,
           message: 'Enjoy your token!',
-          token: token
+          token: token,
+          user: userResponse
         });
       }, function (error) {
         res.status(404).json({success: false, message: error.toString()});
@@ -72,7 +73,7 @@ module.exports.renewToken = function (req, res) {
  */
 module.exports.getFacebookUserInfo = function (req, res) {
   var ACCESS_TOKEN = req.body.access_token;
-  var requestInfo = ['name', 'gender', 'picture', 'birthday', 'first_name', 'last_name', 'email'];
+  var requestInfo = ['name', 'gender', 'picture.width(300).height(300)', 'birthday', 'first_name', 'last_name', 'email'];
   var url = config.oauthFacebookInfo + '?' + 'access_token=' + ACCESS_TOKEN + '&fields=' + utilsService.getFacebookInfoRequestString(requestInfo);
   var userBuild = User.build();
   restClient.getFBUserInfo(url)
@@ -89,7 +90,8 @@ module.exports.getFacebookUserInfo = function (req, res) {
             res.json({
               success: true,
               message: 'Enjoy your token!',
-              token: token
+              token: token,
+              user: userResponse
             });
           }, function (error) {
             res.status(404).json({success: false, message: error.toString()});
@@ -131,7 +133,8 @@ module.exports.getGoogleUserInfo = function (req, res) {
            res.json({
              success: true,
              message: 'Enjoy your token!',
-             token: token
+             token: token,
+             user: userResponse
            });
          }, function (error) {
            res.status(404).json({success: false, message: error.toString()});
